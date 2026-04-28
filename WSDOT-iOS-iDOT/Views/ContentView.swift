@@ -30,6 +30,13 @@ struct ContentView: View {
                 .tabItem {
                     Label("Passes", systemImage: "mountain.2.fill")
                 }
+            
+            // Tab 4: My Route
+            MyRouteView()
+                .tabItem {
+                    Label("My Route", systemImage: "mountain.2.fill")
+                }
+            
         }
         .tint(.blue)
     }
@@ -78,6 +85,21 @@ struct MountainPassView: View {
                 .font(.largeTitle)
                 .bold()
             Text("Pass conditions and weather reports.")
+                .foregroundColor(.secondary)
+        }
+    }
+}
+
+struct MyRouteView: View {
+    var body: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "road.lane.fill")
+                .font(.system(size: 60))
+                .foregroundColor(.blue)
+            Text("My Route")
+                .font(.largeTitle)
+                .bold()
+            Text("Alerts impacting travel routes")
                 .foregroundColor(.secondary)
         }
     }
