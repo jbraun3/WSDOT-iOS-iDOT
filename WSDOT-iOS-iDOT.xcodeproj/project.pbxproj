@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		84962B172FA04E9C00A33664 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84962B152FA04E8600A33664 /* Secrets.plist */; };
+		84962B192FA0505C00A33664 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 84962B182FA0504700A33664 /* .gitignore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		84962AF92FA0498B00A33664 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		84962AE92FA0498800A33664 /* WSDOT-iOS-iDOT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WSDOT-iOS-iDOT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84962AF82FA0498B00A33664 /* WSDOT-iOS-iDOTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WSDOT-iOS-iDOTTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84962B022FA0498B00A33664 /* WSDOT-iOS-iDOTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WSDOT-iOS-iDOTUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84962B152FA04E8600A33664 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		84962B182FA0504700A33664 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,10 +82,12 @@
 		84962AE02FA0498800A33664 = {
 			isa = PBXGroup;
 			children = (
+				84962B182FA0504700A33664 /* .gitignore */,
 				84962AEB2FA0498800A33664 /* WSDOT-iOS-iDOT */,
 				84962AFB2FA0498B00A33664 /* WSDOT-iOS-iDOTTests */,
 				84962B052FA0498B00A33664 /* WSDOT-iOS-iDOTUITests */,
 				84962AEA2FA0498800A33664 /* Products */,
+				84962B152FA04E8600A33664 /* Secrets.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +221,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84962B172FA04E9C00A33664 /* Secrets.plist in Resources */,
+				84962B192FA0505C00A33664 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
