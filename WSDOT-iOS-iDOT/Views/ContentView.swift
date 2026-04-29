@@ -12,6 +12,11 @@ struct ContentView: View {
     var body: some View {
         // TabView is the SwiftUI equivalent of a bottom navigation router
         TabView {
+            HomePageView()
+                .tabItem{
+                    Label("Home", systemImage: "house")
+                }
+            
             
             // Tab 1: Traffic Map
             TrafficMapView()
@@ -22,7 +27,7 @@ struct ContentView: View {
             // Tab 2: Ferry Schedules
             FerryScheduleView()
                 .tabItem {
-                    Label("Ferries", systemImage: "sailboat.fill")
+                    Label("Ferries", systemImage: "ferry.fill")
                 }
             
             // Tab 3: Mountain Passes
@@ -34,7 +39,7 @@ struct ContentView: View {
             // Tab 4: My Route
             MyRouteView()
                 .tabItem {
-                    Label("My Route", systemImage: "mountain.2.fill")
+                    Label("My Route", systemImage: "road.lanes")
                 }
             
         }
@@ -44,7 +49,6 @@ struct ContentView: View {
 
 // MARK: - Placeholder Views
 // These are the structs Xcode was looking for!
-
 struct TrafficMapView: View {
     var body: some View {
         VStack(spacing: 20) {
@@ -63,7 +67,7 @@ struct TrafficMapView: View {
 struct FerryScheduleView: View {
     var body: some View {
         VStack(spacing: 20) {
-            Image(systemName: "sailboat.fill")
+            Image(systemName: "ferry.fill")
                 .font(.system(size: 60))
                 .foregroundColor(.blue)
             Text("Ferry Schedules")
@@ -93,7 +97,7 @@ struct MountainPassView: View {
 struct MyRouteView: View {
     var body: some View {
         VStack(spacing: 20) {
-            Image(systemName: "road.lane.fill")
+            Image(systemName: "road.lanes")
                 .font(.system(size: 60))
                 .foregroundColor(.blue)
             Text("My Route")
@@ -105,6 +109,39 @@ struct MyRouteView: View {
     }
 }
 
+struct HomePageView: View {
+    //Traffic Map, Ferries, Mountain Passes, Bridge Alerts, Toll Rates, Border Waits, Amtrak, My Routes
+    let icons = ["map.fill", "ferry.fill", "mountain.2.fill", "figure.walk.diamond", "rectangle.fill", "leaf.fill", "tram.fill", "road.lanes"]
+    let labels = ["Traffic Map", "Ferries", "Mountain Passes", "Bridge Alerts", "Toll Rates", "Border Waits", "Amtrak", "My Routes"]
+    
+    let radius: CGFloat = 120
+    
+    var body: some View {
+        ZStack{
+            ForEach(0 ..< icons.count, id :\.self){index in
+                let angle = Double(index) * (360/Double(icons.count))
+                VStack{
+                    Image(systemName: icons[index])
+                        .font(.system(size:60))
+                        .foregroundColor(.blue)
+                        .frame(width: 50, height: 50)
+                    Text(labels[index])
+                        .font(.caption)
+
+                }
+                .rotationEffect(.degrees(-angle))
+
+                .offset(y: -radius)
+                .rotationEffect(.degrees(angle))
+            }
+
+        }
+
+    }
+        
+        
+    
+}
 #Preview {
     ContentView()
 }
