@@ -10,7 +10,7 @@ struct TrafficMapHome: View {
     var body: some View {
         TabView {
             
-            TrafficMapLocation()
+            TrafficMap()
                 .tabItem {
                     Label("Location", systemImage: "map")
                 }

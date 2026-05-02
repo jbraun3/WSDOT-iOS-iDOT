@@ -17,4 +17,18 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>
 
+import Foundation
 
+struct ApiKeys {
+    
+    // WSDOT API key (re-checks every time key is requested)
+    static var wsdotKey: String {
+        guard let filePath = Bundle.main.path(forResource: "Secrets", ofType: "plist"),
+              let plist = NSDictionary(contentsOfFile: filePath),
+              let key = plist["WSDOT_KEY"] as? String else {
+            fatalError("Couldn't find Secrets.plist or the WSDOT_KEY inside it.")
+        }
+        return key
+    }
+    
+}

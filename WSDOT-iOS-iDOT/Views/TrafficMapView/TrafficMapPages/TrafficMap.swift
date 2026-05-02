@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct TrafficMapLocation: View {
+struct TrafficMap: View {
     var body: some View {
         Text("TrafficMapLocation")
     }
