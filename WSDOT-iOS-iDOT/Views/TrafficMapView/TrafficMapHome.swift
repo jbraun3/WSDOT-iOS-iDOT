@@ -1,31 +1,33 @@
 //
-//  FerriesHome.swift
+//  TrafficMapHome.swift
 //  WSDOT-iOS-iDOT
 //
 //  Created by Jules on 4/29/26.
 //
 import SwiftUI
 
-struct FerriesHome: View {
+struct TrafficMapHome: View {
     var body: some View {
-         
         TabView {
-            FerriesList()
+            
+            TrafficMapLocation()
                 .tabItem {
-                    Label("Ferries", systemImage: "ferry")
+                    Label("Location", systemImage: "map")
                 }
             
-            FerriesMap()
+            TrafficMapCameras()
                 .tabItem {
-                    Label("Map", systemImage: "map")
+                    Label("Cameras", systemImage: "camera")
                 }
-            FerriesAlert()
+            
+            TrafficMapAlerts()
                 .tabItem {
                     Label("Alerts", systemImage: "exclamationmark.triangle.text.page")
                 }
-            FerriesReserve()
+            
+            TrafficMapTravelerInformation()
                 .tabItem {
-                    Label("Reserve", systemImage: "wallet.bifold")
+                    Label("Settings", systemImage: "gearshape")
                 }
         }
         .tint(.wsdoTprimarygreen)
@@ -33,5 +35,5 @@ struct FerriesHome: View {
 }
 
 #Preview {
-    FerriesHome()
+    TrafficMapHome()
 }
