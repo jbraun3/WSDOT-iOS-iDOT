@@ -9,19 +9,15 @@ import SwiftUI
 struct TrafficMapHome: View {
     var body: some View {
         TabView {
-            TrafficMapRefresh()
-                .tabItem {
-                    Label("Refresh", systemImage: "arrow.clockwise")
-                }
             
             TrafficMapLocation()
                 .tabItem {
-                    Label("Location", systemImage: "location.fill")
+                    Label("Location", systemImage: "map")
                 }
             
             TrafficMapCameras()
                 .tabItem {
-                    Label("Cameras", systemImage: "camera.fill")
+                    Label("Cameras", systemImage: "camera")
                 }
             
             TrafficMapAlerts()
@@ -29,9 +25,9 @@ struct TrafficMapHome: View {
                     Label("Alerts", systemImage: "exclamationmark.triangle.text.page")
                 }
             
-            TrafficMapSettings()
+            TrafficMapTravelerInformation()
                 .tabItem {
-                    Label("Settings", systemImage: "gearshape.fill")
+                    Label("Settings", systemImage: "gearshape")
                 }
         }
         .tint(.wsdotGreen)

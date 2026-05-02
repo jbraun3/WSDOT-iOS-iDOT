@@ -6,8 +6,8 @@
 //
 import SwiftUI
 
-struct TrafficMapSettings: View {
+struct TrafficMapTravelerInformation: View {
     var body: some View {
-        Text("TrafficMapSettings")
+        Text("TrafficMapTravelerInformation")
     }
 }
