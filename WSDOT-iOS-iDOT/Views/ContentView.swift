@@ -29,7 +29,6 @@ struct ContentView: View {
                                 .frame(width: 50, height: 50)
                             Text(labels[index])
                                 .font(.caption)
-
                         }
                     }
                     .buttonStyle(.plain)
