@@ -39,9 +39,7 @@ struct TrafficMap: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        withAnimation {
-                            showLegend.toggle()
-                        }
+                        showLegend = true
                     }) {
                         ZStack {
                             Circle()
@@ -59,6 +57,8 @@ struct TrafficMap: View {
                     }
                     .padding(.top, 67)
                     .padding(.trailing, 16)
+                    .opacity(showLegend ? 0 : 1)
+                    .animation(.easeInOut(duration: 0.3), value: showLegend)
                 }
                 Spacer()
             }
@@ -66,29 +66,6 @@ struct TrafficMap: View {
             if showLegend {
                 LegendPopup(isPresented: $showLegend)
             }
-        }
-    }
-}
-
-struct LegendPopup: View {
-    @Binding var isPresented: Bool
-    
-    var body: some View {
-        ZStack {
-            Color.clear
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    withAnimation {
-                        isPresented = false
-                    }
-                }
-            
-            Text("Legend Info")
-                .foregroundColor(.white)
-                .padding(24)
-                .background(.black.opacity(0.6), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-                .background(Material.ultraThin, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-                .padding(32)
         }
     }
 }
