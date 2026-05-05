@@ -43,10 +43,19 @@ struct TrafficMap: View {
                             showLegend.toggle()
                         }
                     }) {
-                        Image("legendinfoicon")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 41)
+                        ZStack {
+                            Circle()
+                                .fill(.wsdoTprimarygreen)
+                                .frame(width: 40, height: 40)
+                                .overlay(
+                                    Circle()
+                                        .stroke(Color.white, lineWidth: 2)
+                                )
+                            
+                            Image(systemName: "ellipsis")
+                                .font(.system(size: 24, weight: .bold))
+                                .foregroundColor(.white)
+                        }
                     }
                     .padding(.top, 67)
                     .padding(.trailing, 16)
