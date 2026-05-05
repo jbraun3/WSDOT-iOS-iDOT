@@ -25,7 +25,7 @@ struct ApiKeys {
     static var wsdotKey: String {
         guard let filePath = Bundle.main.path(forResource: "Secrets", ofType: "plist"),
               let plist = NSDictionary(contentsOfFile: filePath),
-              let key = plist["WSDOT_KEY"] as? String else {
+              let key = plist["API-Key"] as? String else {
             fatalError("Couldn't find Secrets.plist or the WSDOT_KEY inside it.")
         }
         return key
