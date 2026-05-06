@@ -5,9 +5,15 @@
         "color-space" : "srgb",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "0x5F",
-          "green" : "0x7B",
+<<<<<<< HEAD:WSDOT-iOS-iDOT/Assets/Assets.xcassets/WSDOTbrightgreen.colorset/Contents.json
+          "blue" : "0x40",
+          "green" : "0xB1",
           "red" : "0x00"
+=======
+          "blue" : "0",
+          "green" : "0",
+          "red" : "0"
+>>>>>>> main:WSDOT-iOS-iDOT/Assets/Assets.xcassets/AccentColor.colorset/Contents.json
         }
       },
       "idiom" : "universal"
@@ -23,8 +29,8 @@
         "color-space" : "srgb",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "0x5F",
-          "green" : "0x7B",
+          "blue" : "0x40",
+          "green" : "0xB1",
           "red" : "0x00"
         }
       },
