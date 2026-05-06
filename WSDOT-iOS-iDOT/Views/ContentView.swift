@@ -16,8 +16,25 @@ struct ContentView: View {
     
     let radius: CGFloat = 120
     
+    // global nav styling
+    init() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.wsdoTprimarygreen
+        
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        
+        UINavigationBar.appearance().tintColor = UIColor.white
+
+    }
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack{
                 ForEach(0 ..< icons.count, id :\.self){index in
                     let angle = Double(index) * (360/Double(icons.count))
@@ -35,6 +52,15 @@ struct ContentView: View {
                     .rotationEffect(.degrees(-angle))
                     .offset(y: -radius)
                     .rotationEffect(.degrees(angle))
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image("WSDOT-logo-white")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 32)
                 }
             }
         }

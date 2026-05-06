@@ -7,55 +7,36 @@
 import SwiftUI
 
 struct MountainPassesHome: View {
-    // 1. Our State Variables
     @State private var passes: [MountainPass] = []
     @State private var isLoading = true
     @State private var errorMessage: String? = nil
     
     var body: some View {
-        // VStack with spacing: 0 keeps the banner flush against the scroll list
-        VStack(spacing: 0) {
-            
-            // 2. The Fixed Banner
-            HStack {
-                Image(systemName: "mountain.2.fill")
-                    .font(.title)
-                Text("Mountain Passes")
-                    .font(.title)
-                    .bold()
-                Spacer()
-            }
-            .padding()
-            .foregroundColor(.white)
-            .background(Color.wsdoTprimarygreen) // You can change this to a custom WSDOT color later
-            
-            // 3. The Scrollable Content Area
+        
+        Group {
             if isLoading {
-                // Show a spinner while the network call is happening
-                Spacer()
                 ProgressView("Fetching live conditions...")
-                Spacer()
             } else if let errorMessage = errorMessage {
-                // Show an error if the network call fails
-                Spacer()
                 Text("Failed to load: \(errorMessage)")
                     .foregroundColor(.red)
-                    .padding()
-                Spacer()
             } else {
-                // 4. The Scrollable List of Cards
                 ScrollView {
-                    // LazyVStack only renders cards when they scroll onto the screen (great for performance)
                     LazyVStack(spacing: 16) {
                         ForEach(passes) { pass in
-                            PassCardView(pass: pass)
+                            NavigationLink(destination: MountainPassesDetail(pass: pass)) {
+                                PassCardView(pass: pass)
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
                     .padding()
                 }
             }
         }
-        // 5. The modern "useEffect" that triggers our API Service
+
+        .navigationTitle("Mountain Passes")
+        .navigationBarTitleDisplayMode(.inline)
+        
         .task {
             await fetchPassData()
         }
@@ -116,13 +97,8 @@ struct PassCardView: View {
         
         .padding()
         // These modifiers create the "Card" look
-        .background(Color(UIColor.systemBackground)) // Adapts to Light/Dark mode
+        .background(Color(UIColor.secondarySystemGroupedBackground))
         .cornerRadius(12)
-        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+        .shadow(color: Color.accentColor.opacity(0.1), radius: 4, x: 0, y: 2)
     }
-}
-
-
-#Preview {
-    MountainPassesHome()
 }
