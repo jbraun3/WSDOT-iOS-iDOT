@@ -10,7 +10,7 @@ import SwiftData
 
 struct ContentView: View {
     
-    let icons = ["icHomeTraffic", "icHomeFerries", "icHomePasses", "icBridgeAlerts", "icHomeTollRates", "icHomeBorderWaits", "icHomeAmtrakCascades", "icHomeMyRoutes"]
+    let icons = ["icHomeTraffic", "icHomeFerries", "icBridgeAlerts", "icHomeAmtrakCascades", "icHomeMyRoutes", "icHomePasses", "icHomeTollRates", "icHomeBorderWaits"]
     
     let radius: CGFloat = 145
     
@@ -241,7 +241,7 @@ struct ContentView: View {
         AnyView(MyRoutesHome())
     ]
     
-    let labels = ["Traffic Map", "Ferries", "Mountain Passes", "Bridge Alerts", "Toll Rates", "Border Waits", "Amtrak", "My Routes"]
+    let labels = ["Traffic Map", "Ferries", "Bridge Alerts", "Amtrak", "My Routes", "Mountain Passes", "Toll Rates", "Border Waits"]
 }
 
 
