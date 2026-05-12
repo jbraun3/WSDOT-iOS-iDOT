@@ -10,84 +10,97 @@ import SwiftData
 
 struct ContentView: View {
     
-    let icons = ["icHomeTraffic", "icHomeFerries", "icBridgeAlerts", "icHomeAmtrakCascades", "icHomeMyRoutes", "icHomePasses", "icHomeTollRates", "icHomeBorderWaits"]
+    let features: [WSDOTFeature] = [
+        WSDOTFeature(icon: "icHomeTraffic", label: "Traffic Map", destination: AnyView(TrafficMapHome())),
+        WSDOTFeature(icon: "icHomeFerries", label: "Ferries", destination: AnyView(FerriesHome())),
+        WSDOTFeature(icon: "icBridgeAlerts", label: "Bridge Alerts", destination: AnyView(BridgeAlertsHome())),
+        WSDOTFeature(icon: "icHomeAmtrakCascades", label: "Amtrak", destination: AnyView(AmtrakHome())),
+        WSDOTFeature(icon: "icHomePasses", label: "Mountain Passes", destination: AnyView(MountainPassesHome())),
+        WSDOTFeature(icon: "icHomeMyRoutes", label: "My Routes", destination: AnyView(MyRoutesHome())),
+        WSDOTFeature(icon: "icHomeTollRates", label: "Toll Rates", destination: AnyView(TollRatesHome())),
+        WSDOTFeature(icon: "icHomeBorderWaits", label: "Border Waits", destination: AnyView(BorderWaitsHome()))
+    ]
     
     let radius: CGFloat = 145
     
-    @State private var offset: CGFloat = 0
     @State private var isSwipedUp = false
-    
-    let row1: [(icon: String, view: AnyView)] = [
-        ("icHomeTraffic", AnyView(TrafficMapHome())),
-        ("icHomeFerries", AnyView(FerriesHome())),
-        ("icBridgeAlerts", AnyView(BridgeAlertsHome())),
-        ("icHomeAmtrakCascades", AnyView(AmtrakHome()))
-    ]
-    
-    let row2: [(icon: String, view: AnyView)] = [
-        ("icHomePasses", AnyView(MountainPassesHome())),
-        ("icHomeMyRoutes", AnyView(MyRoutesHome())),
-        ("icHomeTollRates", AnyView(TollRatesHome())),
-        ("icHomeBorderWaits", AnyView(BorderWaitsHome()))
-    ]
-    
-    let row1Positions: [(x: CGFloat, y: CGFloat)] = [(11, 31), (111, 31), (211, 31), (311, 31)]
-    let row2Positions: [(x: CGFloat, y: CGFloat)] = [(11, 131), (111, 131), (211, 131), (311, 131)]
-    
-    init() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor.wsdoTprimarygreen
-        
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        
-        UINavigationBar.appearance().tintColor = UIColor.white
-
-    }
     
     var body: some View {
         NavigationStack {
             ZStack{
-                Color(red: 0.11, green: 0.11, blue: 0.114)
+                // body styling
+                Color("WSDOTbackground")
                     .ignoresSafeArea()
                 
                 RadialGradient(
                     colors: [
                         Color(red: 0.0, green: 0.812, blue: 0.627),
-                        Color(red: 0.039, green: 0.255, blue: 0.204),
-                        Color(red: 0.11, green: 0.11, blue: 0.114)
+                        Color("WSDOTbackground")
                     ],
                     center: .center,
                     startRadius: 0,
                     endRadius: 170
                 )
-                .frame(width: 344, height: 336)
-                .opacity(0.10)
+                //                .frame(width: 344, height: 336)
+                .opacity(0.30)
+                .offset(y: isSwipedUp ? -320 : 0)
+                
+                // favorite items
                 
                 if isSwipedUp {
-                    gridView
-                } else {
-                    circularView
-                }
-            }
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        if value.translation.height < -50 && !isSwipedUp {
-                            withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
-                                isSwipedUp = true
-                            }
-                        } else if value.translation.height > 50 && isSwipedUp {
-                            withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
-                                isSwipedUp = false
-                            }
-                        }
+                    VStack {
+                        Spacer().frame(height: 250)
+                        Text("Favorites")
+                            .font(.title2).bold()
+                        
+                        // favorites objects
+
                     }
+                    .transition(.opacity)
+                }
+                
+                // loop through icons
+                ForEach(0..<features.count, id: \.self) { index in
+                    NavigationLink(destination: features[index].destination) {
+                        VStack {
+                            Image(features[index].icon)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40, height: 40)
+                            
+                            Text(features[index].label)
+                                .font(.system(size: 10))
+                                .foregroundColor(Color( "AccentColor"))
+                            // line limit?
+                        }
+                        .frame(width: 80, height: 80)
+                        .glassEffect(
+                            .regular.interactive(), in: .rect(cornerRadius: 16.0)
+                        )
+                    }
+                    .buttonStyle(.plain)
+                    .offset(x: xOffset(for: index), y: yOffset(for: index))                }
+                
+                // swipe as toggle
+                Button(action: {
+                    withAnimation(.spring(response: 0.5, dampingFraction: 0.8)) {
+                        isSwipedUp.toggle()
+                    }
+                }) {
+                    Image(systemName: isSwipedUp ? "chevron.down" : "chevron.up")
+                        .font(.system(size: 34, weight: .bold))
+                        .foregroundColor(Color("WSDOTprimarygreen"))
+                }
+                .offset(y: 250)
+            }
+            .gesture(DragGesture()
+                .onEnded { value in
+                    if value.translation.height < -50 && !isSwipedUp {
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.8)) { isSwipedUp = true }
+                    } else if value.translation.height > 50 && isSwipedUp {
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.8)) { isSwipedUp = false }
+                    }
+                }
             )
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -98,152 +111,38 @@ struct ContentView: View {
                         .frame(height: 32)
                 }
             }
+            .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+        }
+        
+    }
+    
+    // MARK: -layout helpers
+    
+    // calculate horezontal positions
+    func xOffset(for index: Int) -> CGFloat {
+        if isSwipedUp {
+            let col = index % 4
+            return CGFloat(col) * 90 - 135
+        } else {
+            let angle = Double(index) * (360 / Double(features.count))
+            let radian = angle * .pi / 180
+            return CGFloat(sin(radian)) * radius
         }
     }
     
-    var circularView: some View {
-        ZStack {
-            ForEach(0 ..< icons.count, id :\.self){index in
-                let angle = Double(index) * (360/Double(icons.count))
-                NavigationLink(destination: destinations[index]) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.black.opacity(0.5))
-                            .frame(width: 90, height: 90)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(
-                                        AngularGradient(
-                                            gradient: Gradient(stops: [
-                                                .init(color: Color.white.opacity(0), location: 0),
-                                                .init(color: Color.white.opacity(0.35), location: 0.12),
-                                                .init(color: Color.white.opacity(0), location: 0.37),
-                                                .init(color: Color.white.opacity(0.35), location: 0.62),
-                                                .init(color: Color.white.opacity(0), location: 0.87),
-                                                .init(color: Color.white.opacity(0), location: 1)
-                                            ]),
-                                            center: .center
-                                        ),
-                                        lineWidth: 1
-                                    )
-                            )
-                        
-                        VStack{
-                            Image(icons[index])
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50, height: 50)
-                            Text(labels[index])
-                                .font(.caption)
-                        }
-                    }
-                }
-                .buttonStyle(.plain)
-                .rotationEffect(.degrees(-angle))
-                .offset(y: -radius)
-                .rotationEffect(.degrees(angle))
-            }
-            
-            Button(action: {
-                withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
-                    isSwipedUp = true
-                }
-            }) {
-                Image(systemName: "chevron.up")
-                    .font(.system(size: 34, weight: .bold))
-                    .foregroundColor(.wsdoTprimarygreen)
-            }
-            .frame(maxWidth: .infinity)
-            .position(x: UIScreen.main.bounds.width / 2, y: 605)
+    func yOffset(for index: Int) -> CGFloat {
+        if isSwipedUp {
+            let row = index / 4
+            return CGFloat(row) * 90 - 300
+        } else {
+            let angle = Double(index) * (360 / Double(features.count))
+            let radian = Angle(degrees: angle).radians
+            return -CGFloat(cos(radian)) * radius
         }
     }
-    
-    var gridView: some View {
-        ZStack {
-            ForEach(0 ..< row1.count, id :\.self){index in
-                NavigationLink(destination: row1[index].view) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.black.opacity(0.5))
-                            .frame(width: 90, height: 90)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(
-                                        AngularGradient(
-                                            gradient: Gradient(stops: [
-                                                .init(color: Color.white.opacity(0), location: 0),
-                                                .init(color: Color.white.opacity(0.35), location: 0.12),
-                                                .init(color: Color.white.opacity(0), location: 0.37),
-                                                .init(color: Color.white.opacity(0.35), location: 0.62),
-                                                .init(color: Color.white.opacity(0), location: 0.87),
-                                                .init(color: Color.white.opacity(0), location: 1)
-                                            ]),
-                                            center: .center
-                                        ),
-                                        lineWidth: 1
-                                    )
-                            )
-                        
-                        Image(row1[index].icon)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                    }
-                    .position(x: row1Positions[index].x + 45, y: row1Positions[index].y + 45)
-                }
-                .buttonStyle(.plain)
-            }
-            
-            ForEach(0 ..< row2.count, id :\.self){index in
-                NavigationLink(destination: row2[index].view) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.black.opacity(0.5))
-                            .frame(width: 90, height: 90)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(
-                                        AngularGradient(
-                                            gradient: Gradient(stops: [
-                                                .init(color: Color.white.opacity(0), location: 0),
-                                                .init(color: Color.white.opacity(0.35), location: 0.12),
-                                                .init(color: Color.white.opacity(0), location: 0.37),
-                                                .init(color: Color.white.opacity(0.35), location: 0.62),
-                                                .init(color: Color.white.opacity(0), location: 0.87),
-                                                .init(color: Color.white.opacity(0), location: 1)
-                                            ]),
-                                            center: .center
-                                        ),
-                                        lineWidth: 1
-                                    )
-                            )
-                        
-                        Image(row2[index].icon)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                    }
-                    .position(x: row2Positions[index].x + 45, y: row2Positions[index].y + 45)
-                }
-                .buttonStyle(.plain)
-            }
-        }
-    }
-    
-    let destinations: [AnyView] = [
-        AnyView(TrafficMapHome()),
-        AnyView(FerriesHome()),
-        AnyView(MountainPassesHome()),
-        AnyView(BridgeAlertsHome()),
-        AnyView(TollRatesHome()),
-        AnyView(BorderWaitsHome()),
-        AnyView(AmtrakHome()),
-        AnyView(MyRoutesHome())
-    ]
-    
-    let labels = ["Traffic Map", "Ferries", "Bridge Alerts", "Amtrak", "My Routes", "Mountain Passes", "Toll Rates", "Border Waits"]
 }
-
 
 #Preview {
     ContentView()

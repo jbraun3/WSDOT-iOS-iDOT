@@ -2,8 +2,11 @@
 //  MountainPassesHome.swift
 //  WSDOT-iOS-iDOT
 //
-//  Created by Jules on 4/29/26.
+//  Created by iDOT
 //
+
+// FINISHED?
+
 import SwiftUI
 
 struct MountainPassesHome: View {
@@ -36,6 +39,9 @@ struct MountainPassesHome: View {
 
         .navigationTitle("Mountain Passes")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
         
         .task {
             await fetchPassData()
@@ -46,32 +52,29 @@ struct MountainPassesHome: View {
     private func fetchPassData() async {
         isLoading = true
         do {
-            // Calling the singleton service we built earlier!
             passes = try await MountainPassesService.shared.getMountainPasses()
             isLoading = false
         } catch {
+            // error handling
             errorMessage = "Please check your connection and try again."
-            print("API Error: \(error)") // Prints the exact error to your Xcode console
+            print("API Error: \(error)")
             isLoading = false
         }
     }
 }
 
-// MARK: sub-views
-
+// MARK: - Sub-Views
 struct PassCardView: View {
     let pass: MountainPass
     
     var body: some View {
         HStack(alignment: .top) {
             
-            // Left Side: Text Data
             VStack(alignment: .leading, spacing: 8) {
                 Text(pass.name)
                     .font(.headline)
                     .foregroundColor(.primary)
                 
-                // We use 'if let' because restrictions are optional in our model
                 if let r1 = pass.restrictionOne {
                     Text("\(r1.travelDirection): \(r1.restrictionText)")
                         .font(.subheadline)
@@ -85,10 +88,8 @@ struct PassCardView: View {
                 }
             }
             
-            Spacer() // Pushes the text left and the icon right
+            Spacer()
             
-            // Right Side: Weather Icon
-            // This perfectly uses the computed property we built in your model!
             Image(systemName: pass.weatherSymbol)
                 .font(.system(size: 32))
                 .foregroundColor(.accentColor)
@@ -96,9 +97,7 @@ struct PassCardView: View {
         }
         
         .padding()
-        // These modifiers create the "Card" look
-        .background(Color(UIColor.secondarySystemGroupedBackground))
-        .cornerRadius(12)
+        .glassEffect(in: .rect(cornerRadius: 16.0))
         .shadow(color: Color.accentColor.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 }

@@ -2,8 +2,10 @@
 //  MountainPassesDetail.swift
 //  WSDOT-iOS-iDOT
 //
-//  Created by Jules on 5/5/26.
+//  Created by iDOT
 //
+
+// TO DO: cameras, weather
 
 import SwiftUI
 
@@ -61,8 +63,7 @@ struct MountainPassesDetail: View {
                     
                 }
                 .padding()
-                .background(Color(UIColor.secondarySystemGroupedBackground))
-                .cornerRadius(12)
+                .glassEffect(in: .rect(cornerRadius: 16.0))
                 .shadow(color: Color.accentColor.opacity(0.1), radius: 4, x: 0, y: 2)
                 
                 // cameras
@@ -106,8 +107,7 @@ struct MountainPassesDetail: View {
                     
                 }
                 .padding()
-                .background(Color(UIColor.secondarySystemGroupedBackground))
-                .cornerRadius(12)
+                .glassEffect(in: .rect(cornerRadius: 16.0))
                 .shadow(color: Color.accentColor.opacity(0.1), radius: 4, x: 0, y: 2)
                 
                 // decode date format
@@ -122,5 +122,9 @@ struct MountainPassesDetail: View {
         
         .navigationTitle("\(pass.name)")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+        
     }
 }

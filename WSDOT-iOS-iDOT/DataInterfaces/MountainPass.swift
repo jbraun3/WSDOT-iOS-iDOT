@@ -42,7 +42,7 @@ struct MountainPass: Codable, Identifiable {
         case cameras = "Cameras"
     }
     
-    // MARK: weather icon helper
+    // MARK: -weather icon helper
     
     var weatherSymbol: String {
         let condition = weatherCondition.lowercased()
@@ -88,7 +88,7 @@ struct MountainPass: Codable, Identifiable {
     }
 }
 
-// MARK: sub-object declarations
+// MARK: -sub-object declarations
 
 struct PassRestriction: Codable {
     let travelDirection: String
