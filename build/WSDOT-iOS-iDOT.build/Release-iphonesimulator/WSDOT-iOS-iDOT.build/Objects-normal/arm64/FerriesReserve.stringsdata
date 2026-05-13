@@ -1,0 +1,16 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/FerriesViews/FerriesPages/FerriesReserve.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "FerriesReserve",
+        "location": {
+          "startingColumn": 14,
+          "startingLine": 11
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,96 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/TollRatesView/TollRateDetail.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Failed to load: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 83
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading toll rates...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 81
+        }
+      },
+      {
+        "comment": "",
+        "key": "My Good To Go",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 96
+        }
+      },
+      {
+        "comment": "",
+        "key": "Direction",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 130
+        }
+      },
+      {
+        "comment": "",
+        "key": "Northbound",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 131
+        }
+      },
+      {
+        "comment": "",
+        "key": "Southbound",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 132
+        }
+      },
+      {
+        "comment": "",
+        "key": "No toll rate data available",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 173
+        }
+      },
+      {
+        "comment": "",
+        "key": "Direction",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 165
+        }
+      },
+      {
+        "comment": "",
+        "key": "Northbound",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 166
+        }
+      },
+      {
+        "comment": "",
+        "key": "Southbound",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 167
+        }
+      },
+      {
+        "comment": "",
+        "key": "to %@",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 292
+        }
+      }
+    ]
+  },
+  "version": 1
+}

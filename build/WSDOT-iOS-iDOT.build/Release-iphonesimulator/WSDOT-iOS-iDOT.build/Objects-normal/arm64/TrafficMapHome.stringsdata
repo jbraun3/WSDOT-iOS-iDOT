@@ -1,0 +1,40 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/TrafficMapView/TrafficMapHome.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Location",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 17
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cameras",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "Alerts",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "Settings",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 32
+        }
+      }
+    ]
+  },
+  "version": 1
+}

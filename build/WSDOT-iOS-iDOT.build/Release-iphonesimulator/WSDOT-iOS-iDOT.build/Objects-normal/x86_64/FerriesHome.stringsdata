@@ -1,0 +1,40 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/FerriesViews/FerriesHome.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Ferries",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 15
+        }
+      },
+      {
+        "comment": "",
+        "key": "Map",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 20
+        }
+      },
+      {
+        "comment": "",
+        "key": "Alerts",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 24
+        }
+      },
+      {
+        "comment": "",
+        "key": "Reserve",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 28
+        }
+      }
+    ]
+  },
+  "version": 1
+}

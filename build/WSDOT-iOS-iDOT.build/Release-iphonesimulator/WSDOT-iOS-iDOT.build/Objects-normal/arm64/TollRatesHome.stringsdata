@@ -1,0 +1,24 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/TollRatesView/TollRatesHome.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Toll Rates",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 16
+        }
+      },
+      {
+        "comment": "",
+        "key": "My Good To Go",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 23
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,64 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/AmtrakView/AmtrakScheduleView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Schedules",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 98
+        }
+      },
+      {
+        "comment": "",
+        "key": "Please select different origin and destination stations.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 64
+        }
+      },
+      {
+        "comment": "",
+        "key": "Failed to load: %@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "No schedules found for the selected route.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 91
+        }
+      },
+      {
+        "comment": "",
+        "key": "Find Schedules",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "Search Schedules",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "Trip %lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 79
+        }
+      }
+    ]
+  },
+  "version": 1
+}

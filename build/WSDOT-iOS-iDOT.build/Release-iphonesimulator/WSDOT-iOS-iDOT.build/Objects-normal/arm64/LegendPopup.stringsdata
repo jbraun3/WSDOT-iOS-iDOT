@@ -1,0 +1,56 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/TrafficMapView/TrafficMapPages/LegendPopup.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Map Legend",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 21
+        }
+      },
+      {
+        "comment": "",
+        "key": "Traffic Flow",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 25
+        }
+      },
+      {
+        "comment": "",
+        "key": "Clear",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "Slow",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "Alert Severity",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "Alert Types",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 65
+        }
+      }
+    ]
+  },
+  "version": 1
+}

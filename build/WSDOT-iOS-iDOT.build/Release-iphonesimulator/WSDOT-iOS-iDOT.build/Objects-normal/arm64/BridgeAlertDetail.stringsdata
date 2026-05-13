@@ -1,0 +1,56 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/BridgeAlertsView/BridgeAlertDetail.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Alert",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 83
+        }
+      },
+      {
+        "comment": "",
+        "key": "Last updated: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "Opens: %@",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "Description",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 35
+        }
+      },
+      {
+        "comment": "",
+        "key": "Details",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld min",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 61
+        }
+      }
+    ]
+  },
+  "version": 1
+}

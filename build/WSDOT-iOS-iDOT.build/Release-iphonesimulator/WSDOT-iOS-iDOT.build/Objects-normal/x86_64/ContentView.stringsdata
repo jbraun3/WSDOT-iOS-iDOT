@@ -1,0 +1,16 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Favorites",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 53
+        }
+      }
+    ]
+  },
+  "version": 1
+}

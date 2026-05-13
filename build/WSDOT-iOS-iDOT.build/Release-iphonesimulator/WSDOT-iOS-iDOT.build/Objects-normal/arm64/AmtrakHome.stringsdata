@@ -1,0 +1,16 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/AmtrakView/AmtrakHome.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Amtrak Cascades",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 29
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,5 @@
+---
+triple:          'x86_64-apple-darwin'
+binary-path:     '/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/build/Release-iphonesimulator/WSDOT-iOS-iDOT.app/WSDOT-iOS-iDOT'
+relocations:     []
+...

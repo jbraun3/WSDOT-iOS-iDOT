@@ -1,0 +1,16 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/FerriesViews/FerriesPages/FerriesAlert.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "FerriesAlert",
+        "location": {
+          "startingColumn": 14,
+          "startingLine": 11
+        }
+      }
+    ]
+  },
+  "version": 1
+}

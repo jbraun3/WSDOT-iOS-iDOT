@@ -1,0 +1,40 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/BridgeAlertsView/BridgeAlertsHome.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Bridge Alerts",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 67
+        }
+      },
+      {
+        "comment": "",
+        "key": "Failed to load: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 38
+        }
+      },
+      {
+        "comment": "",
+        "key": "Fetching bridge alerts...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "No Alerts Reported",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 97
+        }
+      }
+    ]
+  },
+  "version": 1
+}

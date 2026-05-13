@@ -1,0 +1,120 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/MountainPassesView/MountainPassesDetail.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "%@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 123
+        }
+      },
+      {
+        "comment": "",
+        "key": "Last updated: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 114
+        }
+      },
+      {
+        "comment": "",
+        "key": "Restrictions",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 28
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@: %@",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@: %@",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "Conditions",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 43
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld ft",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld°F",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 59
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cameras",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 72
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@: %@",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@: %@",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 80
+        }
+      },
+      {
+        "comment": "",
+        "key": "Conditions",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 87
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld ft",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 99
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld°F",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 103
+        }
+      }
+    ]
+  },
+  "version": 1
+}

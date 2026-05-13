@@ -1,0 +1,16 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/TrafficMapView/TrafficMapPages/TrafficMapCameras.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "TrafficMapCameras",
+        "location": {
+          "startingColumn": 14,
+          "startingLine": 11
+        }
+      }
+    ]
+  },
+  "version": 1
+}

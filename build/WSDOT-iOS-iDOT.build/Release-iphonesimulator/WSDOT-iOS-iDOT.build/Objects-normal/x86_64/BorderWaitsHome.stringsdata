@@ -1,0 +1,40 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/BorderWaitsView/BorderWaitsHome.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Border Waits",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "Failed to load: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 13
+        }
+      },
+      {
+        "comment": "",
+        "key": "No border crossing data available",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 16
+        }
+      },
+      {
+        "comment": "",
+        "key": "Fetching border wait times...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 11
+        }
+      }
+    ]
+  },
+  "version": 1
+}

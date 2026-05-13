@@ -1,0 +1,12 @@
+{
+  "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/DataInterfaces/AmtrakModels.swift" : {
+    "abi-baseline-json" : "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/build/WSDOT-iOS-iDOT.build/Release-iphonesimulator/WSDOT-iOS-iDOT.build/Objects-normal/x86_64/WSDOT_iOS_iDOT.abi.json",
+    "const-values" : "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/build/WSDOT-iOS-iDOT.build/Release-iphonesimulator/WSDOT-iOS-iDOT.build/Objects-normal/x86_64/WSDOT-iOS-iDOT-primary.swiftconstvalues",
+    "dependencies" : "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/build/WSDOT-iOS-iDOT.build/Release-iphonesimulator/WSDOT-iOS-iDOT.build/Objects-normal/x86_64/WSDOT-iOS-iDOT-primary.d",
+    "diagnostics" : "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/build/WSDOT-iOS-iDOT.build/Release-iphonesimulator/WSDOT-iOS-iDOT.build/Objects-normal/x86_64/WSDOT-iOS-iDOT-primary.dia",
+    "objc-header" : "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/build/WSDOT-iOS-iDOT.build/Release-iphonesimulator/WSDOT-iOS-iDOT.build/Objects-normal/x86_64/WSDOT_iOS_iDOT-Swift.h",
+    "swiftdoc" : "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/build/WSDOT-iOS-iDOT.build/Release-iphonesimulator/WSDOT-iOS-iDOT.build/Objects-normal/x86_64/WSDOT_iOS_iDOT.swiftdoc",
+    "swiftmodule" : "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/build/WSDOT-iOS-iDOT.build/Release-iphonesimulator/WSDOT-iOS-iDOT.build/Objects-normal/x86_64/WSDOT_iOS_iDOT.swiftmodule",
+    "swiftsourceinfo" : "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/build/WSDOT-iOS-iDOT.build/Release-iphonesimulator/WSDOT-iOS-iDOT.build/Objects-normal/x86_64/WSDOT_iOS_iDOT.swiftsourceinfo"
+  }
+}

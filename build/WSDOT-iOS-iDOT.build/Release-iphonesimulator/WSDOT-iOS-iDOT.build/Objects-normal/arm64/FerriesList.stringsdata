@@ -1,0 +1,16 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/FerriesViews/FerriesPages/FerriesList.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "FerriesList",
+        "location": {
+          "startingColumn": 14,
+          "startingLine": 11
+        }
+      }
+    ]
+  },
+  "version": 1
+}
