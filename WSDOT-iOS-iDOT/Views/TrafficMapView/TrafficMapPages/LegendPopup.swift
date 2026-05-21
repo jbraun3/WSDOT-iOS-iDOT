@@ -16,6 +16,7 @@ struct LegendPopup: View {
                 .onTapGesture {
                     isPresented = false
                 }
+                
             
             VStack(alignment: .leading, spacing: 32) {
                 Text("Map Legend")
@@ -89,9 +90,14 @@ struct LegendPopup: View {
             .padding(.top, 29)
             .padding(.bottom, 24)
             .frame(width: 351, height: 500)
-            .background(Color.black.opacity(0.8), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+            //.background(Color.black.opacity(0.8), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+            //.background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
             .foregroundColor(.white)
+            .glassEffect(
+                .regular
+                    .tint(.black.opacity(0.2)),
+                    in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+            )
             .padding(32)
         }
     }
