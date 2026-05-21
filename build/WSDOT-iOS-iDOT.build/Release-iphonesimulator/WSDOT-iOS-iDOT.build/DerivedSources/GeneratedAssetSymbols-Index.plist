@@ -311,6 +311,46 @@
 			<key>catalogPath</key>
 			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameBridgeClosureAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/bridgeClosureAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bridgeClosureAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBridgeHighAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/bridgeHighAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bridgeHighAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBridgeLowAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/bridgeLowAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bridgeLowAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameBridgeMediumAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/bridgeMediumAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>bridgeMediumAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameBridgealerttype</string>
 			<key>relativePath</key>
 			<string>./TrafficMapIcons/bridgealerttype.imageset</string>
@@ -336,6 +376,86 @@
 			<string>./TrafficMapIcons/conealerttype.imageset</string>
 			<key>swiftSymbol</key>
 			<string>conealerttype</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameConstructionClosureAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/constructionClosureAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>constructionClosureAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameConstructionHighAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/constructionHighAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>constructionHighAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameConstructionLowAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/constructionLowAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>constructionLowAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameConstructionMediumAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/constructionMediumAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>constructionMediumAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameFerriesClosureAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/ferriesClosureAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>ferriesClosureAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameFerriesHighAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/ferriesHighAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>ferriesHighAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameFerriesLowAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/ferriesLowAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>ferriesLowAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameFerriesMediumAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/ferriesMediumAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>ferriesMediumAlert</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>
@@ -451,6 +571,46 @@
 			<key>catalogPath</key>
 			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameIncidentClosureAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/incidentClosureAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>incidentClosureAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameIncidentHighAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/incidentHighAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>incidentHighAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameIncidentLowAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/incidentLowAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>incidentLowAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameIncidentMediumAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/incidentMediumAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>incidentMediumAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameLegendinfoicon</string>
 			<key>relativePath</key>
 			<string>./legendinfoicon.imageset</string>
@@ -466,6 +626,46 @@
 			<string>./TrafficMapIcons/lowalertseverity.imageset</string>
 			<key>swiftSymbol</key>
 			<string>lowalertseverity</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameMaintenanceClosureAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/maintenanceClosureAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>maintenanceClosureAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameMaintenanceHighAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/maintenanceHighAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>maintenanceHighAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameMaintenanceLowAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/maintenanceLowAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>maintenanceLowAlert</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Assets/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameMaintenanceMediumAlert</string>
+			<key>relativePath</key>
+			<string>./TrafficMapIcons/maintenanceMediumAlert.imageset</string>
+			<key>swiftSymbol</key>
+			<string>maintenanceMediumAlert</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>

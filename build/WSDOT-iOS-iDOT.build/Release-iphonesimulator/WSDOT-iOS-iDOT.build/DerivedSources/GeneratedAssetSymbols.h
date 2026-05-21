@@ -99,6 +99,18 @@ static NSString * const ACImageNameWSDOTLogoBlack AC_SWIFT_PRIVATE = @"WSDOT-log
 /// The "WSDOT-logo-white" asset catalog image resource.
 static NSString * const ACImageNameWSDOTLogoWhite AC_SWIFT_PRIVATE = @"WSDOT-logo-white";
 
+/// The "bridgeClosureAlert" asset catalog image resource.
+static NSString * const ACImageNameBridgeClosureAlert AC_SWIFT_PRIVATE = @"bridgeClosureAlert";
+
+/// The "bridgeHighAlert" asset catalog image resource.
+static NSString * const ACImageNameBridgeHighAlert AC_SWIFT_PRIVATE = @"bridgeHighAlert";
+
+/// The "bridgeLowAlert" asset catalog image resource.
+static NSString * const ACImageNameBridgeLowAlert AC_SWIFT_PRIVATE = @"bridgeLowAlert";
+
+/// The "bridgeMediumAlert" asset catalog image resource.
+static NSString * const ACImageNameBridgeMediumAlert AC_SWIFT_PRIVATE = @"bridgeMediumAlert";
+
 /// The "bridgealerttype" asset catalog image resource.
 static NSString * const ACImageNameBridgealerttype AC_SWIFT_PRIVATE = @"bridgealerttype";
 
@@ -107,6 +119,30 @@ static NSString * const ACImageNameClosurealertseverity AC_SWIFT_PRIVATE = @"clo
 
 /// The "conealerttype" asset catalog image resource.
 static NSString * const ACImageNameConealerttype AC_SWIFT_PRIVATE = @"conealerttype";
+
+/// The "constructionClosureAlert" asset catalog image resource.
+static NSString * const ACImageNameConstructionClosureAlert AC_SWIFT_PRIVATE = @"constructionClosureAlert";
+
+/// The "constructionHighAlert" asset catalog image resource.
+static NSString * const ACImageNameConstructionHighAlert AC_SWIFT_PRIVATE = @"constructionHighAlert";
+
+/// The "constructionLowAlert" asset catalog image resource.
+static NSString * const ACImageNameConstructionLowAlert AC_SWIFT_PRIVATE = @"constructionLowAlert";
+
+/// The "constructionMediumAlert" asset catalog image resource.
+static NSString * const ACImageNameConstructionMediumAlert AC_SWIFT_PRIVATE = @"constructionMediumAlert";
+
+/// The "ferriesClosureAlert" asset catalog image resource.
+static NSString * const ACImageNameFerriesClosureAlert AC_SWIFT_PRIVATE = @"ferriesClosureAlert";
+
+/// The "ferriesHighAlert" asset catalog image resource.
+static NSString * const ACImageNameFerriesHighAlert AC_SWIFT_PRIVATE = @"ferriesHighAlert";
+
+/// The "ferriesLowAlert" asset catalog image resource.
+static NSString * const ACImageNameFerriesLowAlert AC_SWIFT_PRIVATE = @"ferriesLowAlert";
+
+/// The "ferriesMediumAlert" asset catalog image resource.
+static NSString * const ACImageNameFerriesMediumAlert AC_SWIFT_PRIVATE = @"ferriesMediumAlert";
 
 /// The "highalertseverity" asset catalog image resource.
 static NSString * const ACImageNameHighalertseverity AC_SWIFT_PRIVATE = @"highalertseverity";
@@ -141,11 +177,35 @@ static NSString * const ACImageNameIcHomeTollRates AC_SWIFT_PRIVATE = @"icHomeTo
 /// The "icHomeTraffic" asset catalog image resource.
 static NSString * const ACImageNameIcHomeTraffic AC_SWIFT_PRIVATE = @"icHomeTraffic";
 
+/// The "incidentClosureAlert" asset catalog image resource.
+static NSString * const ACImageNameIncidentClosureAlert AC_SWIFT_PRIVATE = @"incidentClosureAlert";
+
+/// The "incidentHighAlert" asset catalog image resource.
+static NSString * const ACImageNameIncidentHighAlert AC_SWIFT_PRIVATE = @"incidentHighAlert";
+
+/// The "incidentLowAlert" asset catalog image resource.
+static NSString * const ACImageNameIncidentLowAlert AC_SWIFT_PRIVATE = @"incidentLowAlert";
+
+/// The "incidentMediumAlert" asset catalog image resource.
+static NSString * const ACImageNameIncidentMediumAlert AC_SWIFT_PRIVATE = @"incidentMediumAlert";
+
 /// The "legendinfoicon" asset catalog image resource.
 static NSString * const ACImageNameLegendinfoicon AC_SWIFT_PRIVATE = @"legendinfoicon";
 
 /// The "lowalertseverity" asset catalog image resource.
 static NSString * const ACImageNameLowalertseverity AC_SWIFT_PRIVATE = @"lowalertseverity";
+
+/// The "maintenanceClosureAlert" asset catalog image resource.
+static NSString * const ACImageNameMaintenanceClosureAlert AC_SWIFT_PRIVATE = @"maintenanceClosureAlert";
+
+/// The "maintenanceHighAlert" asset catalog image resource.
+static NSString * const ACImageNameMaintenanceHighAlert AC_SWIFT_PRIVATE = @"maintenanceHighAlert";
+
+/// The "maintenanceLowAlert" asset catalog image resource.
+static NSString * const ACImageNameMaintenanceLowAlert AC_SWIFT_PRIVATE = @"maintenanceLowAlert";
+
+/// The "maintenanceMediumAlert" asset catalog image resource.
+static NSString * const ACImageNameMaintenanceMediumAlert AC_SWIFT_PRIVATE = @"maintenanceMediumAlert";
 
 /// The "maintenancealerttype" asset catalog image resource.
 static NSString * const ACImageNameMaintenancealerttype AC_SWIFT_PRIVATE = @"maintenancealerttype";

@@ -4,34 +4,42 @@
     "Localizable": [
       {
         "comment": "",
+        "key": "Traffic Map",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
         "key": "Location",
         "location": {
-          "startingColumn": 31,
-          "startingLine": 17
+          "startingColumn": 27,
+          "startingLine": 8
         }
       },
       {
         "comment": "",
         "key": "Cameras",
         "location": {
-          "startingColumn": 31,
-          "startingLine": 22
+          "startingColumn": 27,
+          "startingLine": 13
         }
       },
       {
         "comment": "",
         "key": "Alerts",
         "location": {
-          "startingColumn": 31,
-          "startingLine": 27
+          "startingColumn": 27,
+          "startingLine": 18
         }
       },
       {
         "comment": "",
         "key": "Settings",
         "location": {
-          "startingColumn": 31,
-          "startingLine": 32
+          "startingColumn": 27,
+          "startingLine": 23
         }
       }
     ]

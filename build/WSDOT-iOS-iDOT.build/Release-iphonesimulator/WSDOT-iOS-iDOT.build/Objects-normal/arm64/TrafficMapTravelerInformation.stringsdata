@@ -4,10 +4,122 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "TrafficMapTravelerInformation",
+        "key": "Traveler Information",
         "location": {
-          "startingColumn": 14,
-          "startingLine": 11
+          "startingColumn": 30,
+          "startingLine": 80
+        }
+      },
+      {
+        "comment": "",
+        "key": "Map Style",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 18
+        }
+      },
+      {
+        "comment": "",
+        "key": "Map Layers",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 37
+        }
+      },
+      {
+        "comment": "",
+        "key": "Information",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 46
+        }
+      },
+      {
+        "comment": "",
+        "key": "Map Style",
+        "location": {
+          "startingColumn": 41,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "Style",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 23
+        }
+      },
+      {
+        "comment": "",
+        "key": "System",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 30
+        }
+      },
+      {
+        "comment": "",
+        "key": "Light",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 31
+        }
+      },
+      {
+        "comment": "",
+        "key": "Dark",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 33
+        }
+      },
+      {
+        "comment": "",
+        "key": "Map Legend",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 51
+        }
+      },
+      {
+        "comment": "",
+        "key": "Mountain Passes",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 59
+        }
+      },
+      {
+        "comment": "",
+        "key": "My Good To Go",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 67
+        }
+      },
+      {
+        "comment": "",
+        "key": "WSDOT Website",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 112
         }
       }
     ]

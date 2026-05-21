@@ -121,6 +121,18 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "WSDOT-logo-white" asset catalog image resource.
     static let wsdotLogoWhite = DeveloperToolsSupport.ImageResource(name: "WSDOT-logo-white", bundle: resourceBundle)
 
+    /// The "bridgeClosureAlert" asset catalog image resource.
+    static let bridgeClosureAlert = DeveloperToolsSupport.ImageResource(name: "bridgeClosureAlert", bundle: resourceBundle)
+
+    /// The "bridgeHighAlert" asset catalog image resource.
+    static let bridgeHighAlert = DeveloperToolsSupport.ImageResource(name: "bridgeHighAlert", bundle: resourceBundle)
+
+    /// The "bridgeLowAlert" asset catalog image resource.
+    static let bridgeLowAlert = DeveloperToolsSupport.ImageResource(name: "bridgeLowAlert", bundle: resourceBundle)
+
+    /// The "bridgeMediumAlert" asset catalog image resource.
+    static let bridgeMediumAlert = DeveloperToolsSupport.ImageResource(name: "bridgeMediumAlert", bundle: resourceBundle)
+
     /// The "bridgealerttype" asset catalog image resource.
     static let bridgealerttype = DeveloperToolsSupport.ImageResource(name: "bridgealerttype", bundle: resourceBundle)
 
@@ -129,6 +141,30 @@ extension DeveloperToolsSupport.ImageResource {
 
     /// The "conealerttype" asset catalog image resource.
     static let conealerttype = DeveloperToolsSupport.ImageResource(name: "conealerttype", bundle: resourceBundle)
+
+    /// The "constructionClosureAlert" asset catalog image resource.
+    static let constructionClosureAlert = DeveloperToolsSupport.ImageResource(name: "constructionClosureAlert", bundle: resourceBundle)
+
+    /// The "constructionHighAlert" asset catalog image resource.
+    static let constructionHighAlert = DeveloperToolsSupport.ImageResource(name: "constructionHighAlert", bundle: resourceBundle)
+
+    /// The "constructionLowAlert" asset catalog image resource.
+    static let constructionLowAlert = DeveloperToolsSupport.ImageResource(name: "constructionLowAlert", bundle: resourceBundle)
+
+    /// The "constructionMediumAlert" asset catalog image resource.
+    static let constructionMediumAlert = DeveloperToolsSupport.ImageResource(name: "constructionMediumAlert", bundle: resourceBundle)
+
+    /// The "ferriesClosureAlert" asset catalog image resource.
+    static let ferriesClosureAlert = DeveloperToolsSupport.ImageResource(name: "ferriesClosureAlert", bundle: resourceBundle)
+
+    /// The "ferriesHighAlert" asset catalog image resource.
+    static let ferriesHighAlert = DeveloperToolsSupport.ImageResource(name: "ferriesHighAlert", bundle: resourceBundle)
+
+    /// The "ferriesLowAlert" asset catalog image resource.
+    static let ferriesLowAlert = DeveloperToolsSupport.ImageResource(name: "ferriesLowAlert", bundle: resourceBundle)
+
+    /// The "ferriesMediumAlert" asset catalog image resource.
+    static let ferriesMediumAlert = DeveloperToolsSupport.ImageResource(name: "ferriesMediumAlert", bundle: resourceBundle)
 
     /// The "highalertseverity" asset catalog image resource.
     static let highalertseverity = DeveloperToolsSupport.ImageResource(name: "highalertseverity", bundle: resourceBundle)
@@ -163,11 +199,35 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "icHomeTraffic" asset catalog image resource.
     static let icHomeTraffic = DeveloperToolsSupport.ImageResource(name: "icHomeTraffic", bundle: resourceBundle)
 
+    /// The "incidentClosureAlert" asset catalog image resource.
+    static let incidentClosureAlert = DeveloperToolsSupport.ImageResource(name: "incidentClosureAlert", bundle: resourceBundle)
+
+    /// The "incidentHighAlert" asset catalog image resource.
+    static let incidentHighAlert = DeveloperToolsSupport.ImageResource(name: "incidentHighAlert", bundle: resourceBundle)
+
+    /// The "incidentLowAlert" asset catalog image resource.
+    static let incidentLowAlert = DeveloperToolsSupport.ImageResource(name: "incidentLowAlert", bundle: resourceBundle)
+
+    /// The "incidentMediumAlert" asset catalog image resource.
+    static let incidentMediumAlert = DeveloperToolsSupport.ImageResource(name: "incidentMediumAlert", bundle: resourceBundle)
+
     /// The "legendinfoicon" asset catalog image resource.
     static let legendinfoicon = DeveloperToolsSupport.ImageResource(name: "legendinfoicon", bundle: resourceBundle)
 
     /// The "lowalertseverity" asset catalog image resource.
     static let lowalertseverity = DeveloperToolsSupport.ImageResource(name: "lowalertseverity", bundle: resourceBundle)
+
+    /// The "maintenanceClosureAlert" asset catalog image resource.
+    static let maintenanceClosureAlert = DeveloperToolsSupport.ImageResource(name: "maintenanceClosureAlert", bundle: resourceBundle)
+
+    /// The "maintenanceHighAlert" asset catalog image resource.
+    static let maintenanceHighAlert = DeveloperToolsSupport.ImageResource(name: "maintenanceHighAlert", bundle: resourceBundle)
+
+    /// The "maintenanceLowAlert" asset catalog image resource.
+    static let maintenanceLowAlert = DeveloperToolsSupport.ImageResource(name: "maintenanceLowAlert", bundle: resourceBundle)
+
+    /// The "maintenanceMediumAlert" asset catalog image resource.
+    static let maintenanceMediumAlert = DeveloperToolsSupport.ImageResource(name: "maintenanceMediumAlert", bundle: resourceBundle)
 
     /// The "maintenancealerttype" asset catalog image resource.
     static let maintenancealerttype = DeveloperToolsSupport.ImageResource(name: "maintenancealerttype", bundle: resourceBundle)
@@ -904,6 +964,42 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "bridgeClosureAlert" asset catalog image.
+    static var bridgeClosureAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .bridgeClosureAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "bridgeHighAlert" asset catalog image.
+    static var bridgeHighAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .bridgeHighAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "bridgeLowAlert" asset catalog image.
+    static var bridgeLowAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .bridgeLowAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "bridgeMediumAlert" asset catalog image.
+    static var bridgeMediumAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .bridgeMediumAlert)
+#else
+        .init()
+#endif
+    }
+
     /// The "bridgealerttype" asset catalog image.
     static var bridgealerttype: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -926,6 +1022,78 @@ extension AppKit.NSImage {
     static var conealerttype: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .conealerttype)
+#else
+        .init()
+#endif
+    }
+
+    /// The "constructionClosureAlert" asset catalog image.
+    static var constructionClosureAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .constructionClosureAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "constructionHighAlert" asset catalog image.
+    static var constructionHighAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .constructionHighAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "constructionLowAlert" asset catalog image.
+    static var constructionLowAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .constructionLowAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "constructionMediumAlert" asset catalog image.
+    static var constructionMediumAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .constructionMediumAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "ferriesClosureAlert" asset catalog image.
+    static var ferriesClosureAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .ferriesClosureAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "ferriesHighAlert" asset catalog image.
+    static var ferriesHighAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .ferriesHighAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "ferriesLowAlert" asset catalog image.
+    static var ferriesLowAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .ferriesLowAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "ferriesMediumAlert" asset catalog image.
+    static var ferriesMediumAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .ferriesMediumAlert)
 #else
         .init()
 #endif
@@ -1030,6 +1198,42 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "incidentClosureAlert" asset catalog image.
+    static var incidentClosureAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .incidentClosureAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "incidentHighAlert" asset catalog image.
+    static var incidentHighAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .incidentHighAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "incidentLowAlert" asset catalog image.
+    static var incidentLowAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .incidentLowAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "incidentMediumAlert" asset catalog image.
+    static var incidentMediumAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .incidentMediumAlert)
+#else
+        .init()
+#endif
+    }
+
     /// The "legendinfoicon" asset catalog image.
     static var legendinfoicon: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -1043,6 +1247,42 @@ extension AppKit.NSImage {
     static var lowalertseverity: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .lowalertseverity)
+#else
+        .init()
+#endif
+    }
+
+    /// The "maintenanceClosureAlert" asset catalog image.
+    static var maintenanceClosureAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .maintenanceClosureAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "maintenanceHighAlert" asset catalog image.
+    static var maintenanceHighAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .maintenanceHighAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "maintenanceLowAlert" asset catalog image.
+    static var maintenanceLowAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .maintenanceLowAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "maintenanceMediumAlert" asset catalog image.
+    static var maintenanceMediumAlert: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .maintenanceMediumAlert)
 #else
         .init()
 #endif
@@ -1092,6 +1332,42 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "bridgeClosureAlert" asset catalog image.
+    static var bridgeClosureAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .bridgeClosureAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "bridgeHighAlert" asset catalog image.
+    static var bridgeHighAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .bridgeHighAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "bridgeLowAlert" asset catalog image.
+    static var bridgeLowAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .bridgeLowAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "bridgeMediumAlert" asset catalog image.
+    static var bridgeMediumAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .bridgeMediumAlert)
+#else
+        .init()
+#endif
+    }
+
     /// The "bridgealerttype" asset catalog image.
     static var bridgealerttype: UIKit.UIImage {
 #if !os(watchOS)
@@ -1114,6 +1390,78 @@ extension UIKit.UIImage {
     static var conealerttype: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .conealerttype)
+#else
+        .init()
+#endif
+    }
+
+    /// The "constructionClosureAlert" asset catalog image.
+    static var constructionClosureAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .constructionClosureAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "constructionHighAlert" asset catalog image.
+    static var constructionHighAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .constructionHighAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "constructionLowAlert" asset catalog image.
+    static var constructionLowAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .constructionLowAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "constructionMediumAlert" asset catalog image.
+    static var constructionMediumAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .constructionMediumAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "ferriesClosureAlert" asset catalog image.
+    static var ferriesClosureAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .ferriesClosureAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "ferriesHighAlert" asset catalog image.
+    static var ferriesHighAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .ferriesHighAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "ferriesLowAlert" asset catalog image.
+    static var ferriesLowAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .ferriesLowAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "ferriesMediumAlert" asset catalog image.
+    static var ferriesMediumAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .ferriesMediumAlert)
 #else
         .init()
 #endif
@@ -1218,6 +1566,42 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "incidentClosureAlert" asset catalog image.
+    static var incidentClosureAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .incidentClosureAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "incidentHighAlert" asset catalog image.
+    static var incidentHighAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .incidentHighAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "incidentLowAlert" asset catalog image.
+    static var incidentLowAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .incidentLowAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "incidentMediumAlert" asset catalog image.
+    static var incidentMediumAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .incidentMediumAlert)
+#else
+        .init()
+#endif
+    }
+
     /// The "legendinfoicon" asset catalog image.
     static var legendinfoicon: UIKit.UIImage {
 #if !os(watchOS)
@@ -1231,6 +1615,42 @@ extension UIKit.UIImage {
     static var lowalertseverity: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .lowalertseverity)
+#else
+        .init()
+#endif
+    }
+
+    /// The "maintenanceClosureAlert" asset catalog image.
+    static var maintenanceClosureAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .maintenanceClosureAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "maintenanceHighAlert" asset catalog image.
+    static var maintenanceHighAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .maintenanceHighAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "maintenanceLowAlert" asset catalog image.
+    static var maintenanceLowAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .maintenanceLowAlert)
+#else
+        .init()
+#endif
+    }
+
+    /// The "maintenanceMediumAlert" asset catalog image.
+    static var maintenanceMediumAlert: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .maintenanceMediumAlert)
 #else
         .init()
 #endif

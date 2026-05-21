@@ -1,0 +1,24 @@
+{
+  "source": "/Users/danielbejar/Desktop/WSDOT-iOS-iDOT/WSDOT-iOS-iDOT/Views/TrafficMapView/TrafficMapPages/CameraDetailView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Live video feed",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 30
+        }
+      },
+      {
+        "comment": "",
+        "key": "Camera offline",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 62
+        }
+      }
+    ]
+  },
+  "version": 1
+}

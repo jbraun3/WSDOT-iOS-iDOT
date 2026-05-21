@@ -4,10 +4,18 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "MyRoutesHome",
+        "key": "My Routes",
         "location": {
-          "startingColumn": 14,
-          "startingLine": 11
+          "startingColumn": 26,
+          "startingLine": 24
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld min",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 21
         }
       }
     ]

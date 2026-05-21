@@ -4,10 +4,42 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "TrafficMapAlerts",
+        "key": "Alerts",
         "location": {
-          "startingColumn": 14,
-          "startingLine": 11
+          "startingColumn": 30,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading alerts...",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 12
+        }
+      },
+      {
+        "comment": "",
+        "key": "Failed to load alerts",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 18
+        }
+      },
+      {
+        "comment": "",
+        "key": "No current alerts",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "There are no active highway alerts right now.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 31
         }
       }
     ]

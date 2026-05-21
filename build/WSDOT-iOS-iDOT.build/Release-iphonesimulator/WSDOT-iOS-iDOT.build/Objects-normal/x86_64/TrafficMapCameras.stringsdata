@@ -4,10 +4,34 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "TrafficMapCameras",
+        "key": "Cameras",
         "location": {
-          "startingColumn": 14,
-          "startingLine": 11
+          "startingColumn": 30,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading cameras...",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 21
+        }
+      },
+      {
+        "comment": "",
+        "key": "Search cameras...",
+        "location": {
+          "startingColumn": 60,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "Failed to load cameras",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 27
         }
       }
     ]
