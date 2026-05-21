@@ -46,6 +46,13 @@ struct TrafficMapAlerts: View {
             }
             .navigationTitle("Alerts")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Alerts In This Area")
+                        .foregroundColor(.white)
+                        .font(.headline)
+                }
+            }
             .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)

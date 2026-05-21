@@ -12,14 +12,25 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     @Published var userLocation: CLLocation?
     
+    var currentLocation: CLLocation? {
+        manager.location ?? userLocation
+    }
+    
     override init() {
         super.init()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
+        if manager.authorizationStatus == .authorizedWhenInUse || manager.authorizationStatus == .authorizedAlways {
+            manager.startUpdatingLocation()
+        }
     }
     
     func requestLocation() {
         manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+    }
+
+    func startUpdating() {
         manager.startUpdatingLocation()
     }
     

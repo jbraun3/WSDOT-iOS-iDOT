@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 // single mountain pass object
 struct MountainPass: Codable, Identifiable {
@@ -22,11 +23,24 @@ struct MountainPass: Codable, Identifiable {
     let weatherCondition: String
     let roadCondition: String
     
+    let latitude: Double?
+    let longitude: Double?
+    
     let restrictionOne: PassRestriction?
     let restrictionTwo: PassRestriction?
     let cameras: [PassCamera]?
     
     let dateUpdated: String
+    
+    var hasValidLocation: Bool {
+        guard let lat = latitude, let lon = longitude else { return false }
+        return lat != 0 && lon != 0
+    }
+    
+    var coordinate: CLLocationCoordinate2D? {
+        guard hasValidLocation else { return nil }
+        return CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+    }
     
     // fix naming conventions
     enum CodingKeys: String, CodingKey {
@@ -37,6 +51,8 @@ struct MountainPass: Codable, Identifiable {
         case dateUpdated = "DateUpdated"
         case roadCondition = "RoadCondition"
         case weatherCondition = "WeatherCondition"
+        case latitude = "Latitude"
+        case longitude = "Longitude"
         case restrictionOne = "RestrictionOne"
         case restrictionTwo = "RestrictionTwo"
         case cameras = "Cameras"

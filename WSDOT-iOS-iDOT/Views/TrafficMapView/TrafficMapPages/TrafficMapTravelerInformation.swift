@@ -3,10 +3,10 @@ import SwiftUI
 struct TrafficMapTravelerInformation: View {
     @AppStorage("TrafficLayerMarkerPref") private var trafficLayerOn = true
     @AppStorage("AlertsMarkerPref") private var alertsOn = true
-    @AppStorage("CameraMarkerPref") private var camerasOn = true
     @AppStorage("MountainPassMarkerPref") private var mountainPassesOn = true
     @AppStorage("RestAreaMarkerPref") private var restAreasOn = true
     @AppStorage("TravelTimesMarkerPref") private var travelTimesOn = true
+    @AppStorage("shouldClusterCameraIcons") private var clusterCamerasOn = true
 
     @State private var showLegend = false
     @State private var showMapStylePicker = false
@@ -35,12 +35,12 @@ struct TrafficMapTravelerInformation: View {
                 }
 
                 Section("Map Layers") {
-                    ToggleRow(icon: "car.2.fill", label: "Traffic Layer", isOn: $trafficLayerOn)
-                    ToggleRow(icon: "exclamationmark.triangle.fill", label: "WSDOT Alerts", isOn: $alertsOn)
-                    ToggleRow(icon: "camera.fill", label: "Cameras", isOn: $camerasOn)
-                    ToggleRow(icon: "mountain.2.fill", label: "Mountain Passes", isOn: $mountainPassesOn)
-                    ToggleRow(icon: "tent.fill", label: "Rest Areas", isOn: $restAreasOn)
-                    ToggleRow(icon: "clock.fill", label: "Travel Times", isOn: $travelTimesOn)
+                    MapLayerRow(systemName: "car.2.fill", label: "Traffic Layer", isOn: $trafficLayerOn)
+                    MapLayerRow(imageName: "icMapAlertLow", label: "WSDOT Alerts", isOn: $alertsOn)
+                    MapLayerRow(imageName: "icMountainPass", label: "Mountain Passes", isOn: $mountainPassesOn)
+                    MapLayerRow(imageName: "icMapRestArea", label: "Rest Areas", isOn: $restAreasOn)
+                    MapLayerRow(imageName: "icTravelTime", label: "Travel Times", isOn: $travelTimesOn)
+                    MapLayerRow(imageName: "icMapCamera", label: "Cluster Cameras", isOn: $clusterCamerasOn)
                 }
 
                 Section("Information") {
@@ -79,6 +79,13 @@ struct TrafficMapTravelerInformation: View {
             }
             .navigationTitle("Traveler Information")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Settings")
+                        .foregroundColor(.white)
+                        .font(.headline)
+                }
+            }
             .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
@@ -97,16 +104,38 @@ struct TrafficMapTravelerInformation: View {
     }
 }
 
-struct ToggleRow: View {
-    let icon: String
+struct MapLayerRow: View {
+    let imageName: String?
+    let systemName: String?
     let label: String
     @Binding var isOn: Bool
 
+    init(imageName: String, label: String, isOn: Binding<Bool>) {
+        self.imageName = imageName
+        self.systemName = nil
+        self.label = label
+        self._isOn = isOn
+    }
+
+    init(systemName: String, label: String, isOn: Binding<Bool>) {
+        self.imageName = nil
+        self.systemName = systemName
+        self.label = label
+        self._isOn = isOn
+    }
+
     var body: some View {
         HStack {
-            Image(systemName: icon)
-                .foregroundColor(.accentColor)
-                .frame(width: 24)
+            if let imageName = imageName {
+                Image(imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+            } else if let systemName = systemName {
+                Image(systemName: systemName)
+                    .foregroundColor(.accentColor)
+                    .frame(width: 24)
+            }
             Text(label)
             Spacer()
             Toggle("", isOn: $isOn)

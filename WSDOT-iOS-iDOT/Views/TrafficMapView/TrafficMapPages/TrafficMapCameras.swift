@@ -43,6 +43,14 @@ struct TrafficMapCameras: View {
             }
             .navigationTitle("Cameras")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image("WSDOT-logo-white")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 32)
+                }
+            }
             .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
