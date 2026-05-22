@@ -29,8 +29,6 @@ struct ContentView: View {
         NavigationStack {
             ZStack{
                 // body styling
-                Color("WSDOTbackground")
-                    .ignoresSafeArea()
                 
                 RadialGradient(
                     colors: [
@@ -41,42 +39,50 @@ struct ContentView: View {
                     startRadius: 0,
                     endRadius: 170
                 )
-                //                .frame(width: 344, height: 336)
                 .opacity(0.30)
                 .offset(y: isSwipedUp ? -320 : 0)
                 
                 // favorite items
-                
                 if isSwipedUp {
                     VStack {
-                        Spacer().frame(height: 250)
                         Text("Favorites")
                             .font(.title2).bold()
+                            .offset(x: -135)
                         
-                        // favorites objects
-
+                        ScrollView {
+                            LazyVStack(alignment: .leading, spacing: 10) {
+                                ForEach(features) { feature in
+                                    Text(feature.label)
+                                }
+                                .padding()
+                                .wsdotCard()
+                            }
+                        }
+                    
                     }
                     .transition(.opacity)
+                    .offset(y: 200)
+                    .padding()
                 }
                 
-                // loop through icons
+                // Feature icons
                 ForEach(0..<features.count, id: \.self) { index in
                     NavigationLink(destination: features[index].destination) {
                         VStack {
                             Image(features[index].icon)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 40, height: 40)
+                                .frame(
+                                    width: WSDOTStyle.featureIconSize,
+                                    height: WSDOTStyle.featureIconSize
+                                )
                             
                             Text(features[index].label)
-                                .font(.system(size: 10))
-                                .foregroundColor(Color( "AccentColor"))
-                            // line limit?
+                                .font(.system(size: WSDOTStyle.featureLabelSize))
+                                .foregroundColor(WSDOTStyle.accent)
+                                .multilineTextAlignment(.center)
                         }
-                        .frame(width: 80, height: 80)
-                        .glassEffect(
-                            .regular.interactive(), in: .rect(cornerRadius: 16.0)
-                        )
+                        .wsdotFeatureTile()
                     }
                     .buttonStyle(.plain)
                     .offset(x: xOffset(for: index), y: yOffset(for: index))                }
@@ -87,9 +93,11 @@ struct ContentView: View {
                         isSwipedUp.toggle()
                     }
                 }) {
-                    Image(systemName: isSwipedUp ? "chevron.down" : "chevron.up")
-                        .font(.system(size: 34, weight: .bold))
-                        .foregroundColor(Color("WSDOTprimarygreen"))
+                    if !isSwipedUp {
+                        Image(systemName: "chevron.up")
+                            .font(.system(size: 34, weight: .bold))
+                            .foregroundColor(WSDOTStyle.primaryGreen)
+                    }
                 }
                 .offset(y: 250)
             }
@@ -103,6 +111,7 @@ struct ContentView: View {
                 }
             )
             .navigationBarTitleDisplayMode(.inline)
+            .wsdotToolbar()
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Image("WSDOT-logo-white")
@@ -111,9 +120,6 @@ struct ContentView: View {
                         .frame(height: 32)
                 }
             }
-            .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
         }
         
     }

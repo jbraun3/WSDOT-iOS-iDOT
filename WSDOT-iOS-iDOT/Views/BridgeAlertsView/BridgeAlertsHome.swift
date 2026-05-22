@@ -43,7 +43,7 @@ struct BridgeAlertsHome: View {
                         ForEach(bridgeSections, id: \.0) { bridgeName, bridgeAlerts in
                             VStack(alignment: .leading, spacing: 12) {
                                 Text(bridgeName)
-                                    .font(.title3).bold()
+                                    .font(.title2).bold()
                                     .foregroundColor(.primary)
                                     .padding(.horizontal, 4)
 

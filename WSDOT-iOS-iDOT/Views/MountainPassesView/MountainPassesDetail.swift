@@ -22,7 +22,7 @@ struct MountainPassesDetail: View {
                 Text(pass.name)
                     .font(.largeTitle).bold()
                 
-                
+                // conditions
                 VStack(alignment: .leading, spacing: 8) {
                     
                     Text("Restrictions")
@@ -63,8 +63,7 @@ struct MountainPassesDetail: View {
                     
                 }
                 .padding()
-                .glassEffect(in: .rect(cornerRadius: 16.0))
-                .shadow(color: Color.accentColor.opacity(0.1), radius: 4, x: 0, y: 2)
+                .wsdotCard()
                 
                 // cameras
                 VStack(alignment: .leading, spacing: 8) {
@@ -107,24 +106,21 @@ struct MountainPassesDetail: View {
                     
                 }
                 .padding()
-                .glassEffect(in: .rect(cornerRadius: 16.0))
-                .shadow(color: Color.accentColor.opacity(0.1), radius: 4, x: 0, y: 2)
+                .wsdotCard()
                 
                 // decode date format
                 Text("Last updated: \(pass.dateUpdated)")
                     .font(.caption)
                     .foregroundColor(.gray)
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.top, 20)
+                    .padding(.top, 10)
             }
             .padding()
         }
         
         .navigationTitle("\(pass.name)")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotToolbar()
         
     }
 }
