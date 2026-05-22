@@ -7,44 +7,31 @@
 //  Home page for MyRoutes
 //
 import SwiftUI
+import MapKit
 
 struct MyRoutesHome: View {
-    @State private var travelTime: [TravelTime] = []
-    @State private var isLoading: Bool = true
-    @State private var errorMessage: String? = nil
+    @State private var routeStore = RouteStore()
     
-
     var body: some View {
-        List(travelTime) { travelTime in
-            VStack(){
-                Text(travelTime.name)
-                Text("\(travelTime.currentTime) min")
-            }
+        TabView() {
+            MyRoutesMap(routeStore: routeStore)
+                .tabItem {
+                    Label("Map", systemImage: "map")
+                }
+            MyRouteAllRoutes(routeStore: routeStore)
+                .tabItem {
+                    Label("Routes", systemImage: "list.star")
+                }
         }
+        .tint(.wsdoTprimarygreen)
         .navigationTitle("My Routes")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarColorScheme(.dark, for: .navigationBar)
-        
-        .task {
-            await fetchPassData()
-        }
+
     }
-    
-    // MARK: - Network Helper
-    private func fetchPassData() async {
-        isLoading = true
-        do {
-            travelTime = try await TravelTimeServices.shared.getTravelTimes()
-            isLoading = false
-        } catch {
-            // error handling
-            errorMessage = "Please check your connection and try again."
-            print("API Error: \(error)")
-            isLoading = false
-        }
-    }
+
 }
 
 #Preview {
