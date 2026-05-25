@@ -20,8 +20,8 @@ class SearchCompleter: NSObject, ObservableObject, MKLocalSearchCompleterDelegat
         completer.resultTypes = [.address, .pointOfInterest]
     }
     
-    func search(_ queary: String){
-        completer.queryFragment = queary
+    func search(_ query: String){
+        completer.queryFragment = query
     }
     
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {

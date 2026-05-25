@@ -20,10 +20,11 @@ struct MyRoutesMap: View {
     @State private var chosenRoute: MKRoute?
     @State private var routeOptions: [MKRoute] = []
     @StateObject private var routeSearchCompleter = SearchCompleter()
-    
+    @FocusState private var isKeyboardOpen: Bool
     
     var canSubmit: Bool {startResult != nil && endResult != nil}
     var canSave: Bool {chosenRoute != nil}
+    
     
     @State private var position: MapCameraPosition = .region(MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 47.5990, longitude: -122.3350),
@@ -36,12 +37,22 @@ struct MyRoutesMap: View {
                 ForEach(routeOptions, id: \.name){ route in
                     MapPolyline(route.polyline)
                         .stroke(
-                            route.name == chosenRoute?.name ? Color(.wsdoTprimarygreen) : Color(.wsdoTgrey),
+                            route.name == chosenRoute?.name ? Color(.wsdoTlimegreen) : Color(.wsdoTgrey),
                             lineWidth: route.name == chosenRoute?.name ? 5 : 3
                         )
                 }
             }
-            .toolbar(searchRoute ? .hidden: .visible, for:  .navigationBar)
+            .toolbar(searchRoute ? .hidden: .visible, for:  .tabBar)
+            .onTapGesture {
+                if isKeyboardOpen {
+                    isKeyboardOpen = false
+                } else if searchRoute{
+                    withAnimation {
+                        searchRoute = false
+                    }
+                }
+            }
+            
             
             //side menu with add new route feature
             VStack {
@@ -58,7 +69,7 @@ struct MyRoutesMap: View {
             if searchRoute{
                 VStack(spacing: 0){
                     Spacer()
-                    VStack(spacing: 16){
+                    VStack(spacing: 8){
                         Spacer().frame(height:8)
 
                         Text("Add New Route").font(.headline)
@@ -72,6 +83,7 @@ struct MyRoutesMap: View {
                                 .textFieldStyle(.roundedBorder)
                                 .onTapGesture {
                                     isSearchStart = true
+                                    isKeyboardOpen = true
                                 }
                                 .onChange(of: startSearch){
                                    _, val in routeSearchCompleter.search(val)
@@ -96,10 +108,11 @@ struct MyRoutesMap: View {
                             Label("Ending Location", systemImage: "mappin.circle")
                                 .font(.caption)
                                 .foregroundColor(.wsdoTprimarygreen)
-                            TextField("Search end loction", text: $endSearch)
+                            TextField("Search end location", text: $endSearch)
                                 .textFieldStyle(.roundedBorder)
                                 .onTapGesture {
                                     isSearchStart = false
+                                    isKeyboardOpen = true
                                 }
                                 .onChange(of: endSearch){
                                    _, val in routeSearchCompleter.search(val)
@@ -131,12 +144,13 @@ struct MyRoutesMap: View {
                             routeStore.savedRoutes.append(SavedRoute(id: UUID(),
                                                                      name: "\(startSearch) → \(endSearch)",
                                                                      startLocation: start,
-                                                                    endLocation: end))
+                                                                     endLocation: end))
                             startSearch = ""
                             endSearch = ""
                             startResult = nil
                             endResult = nil
-
+                            resetRoutes()
+                            withAnimation {searchRoute = false}
                         } label: {
                             Text("Search Route")
                                 .frame(maxWidth: .infinity)
@@ -193,7 +207,7 @@ struct MyRoutesMap: View {
                             if !result.subtitle.isEmpty {
                                 Text(result.subtitle)
                                     .font(.caption)
-                                    .foregroundColor(.wsdoTgrey)
+                                    .foregroundColor(.primary)
                             }
                         }
                         .padding(.vertical, 8)
