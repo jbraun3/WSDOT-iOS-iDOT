@@ -15,9 +15,7 @@ struct TollRatesHome: View {
         }
         .navigationTitle("Toll Rates")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotToolbar()
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("My Good To Go") {

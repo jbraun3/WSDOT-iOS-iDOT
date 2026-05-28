@@ -53,9 +53,7 @@ struct TrafficMapAlerts: View {
                         .font(.headline)
                 }
             }
-            .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .wsdotToolbar()
             .task { await fetchAlerts() }
         }
     }

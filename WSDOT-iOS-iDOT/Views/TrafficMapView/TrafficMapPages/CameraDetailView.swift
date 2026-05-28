@@ -43,9 +43,7 @@ struct CameraDetailView: View {
         }
         .navigationTitle(camera.title)
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotToolbar()
         .wsdotFavorite(category: .trafficCamera, itemId: String(camera.id), title: camera.title, subtitle: camera.roadName)
         .task { await loadImage() }
     }

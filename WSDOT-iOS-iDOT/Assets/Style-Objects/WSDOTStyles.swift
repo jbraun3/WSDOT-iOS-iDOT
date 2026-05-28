@@ -100,6 +100,15 @@ struct WSDOTToolbarModifier: ViewModifier {
     }
 }
 
+//  WSDOT tab view accent
+//  apply with '.wsdotTabView()' on any TabView
+struct WSDOTTabViewModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .tint(WSDOTStyle.primaryGreen)
+    }
+}
+
 //  Favorite star in trailing toolbar position
 //  apply with '.wsdotFavorite(category:itemId:title:)'
 //  @Query lives here (not inside the ToolbarItem closure) because SwiftData
@@ -152,6 +161,10 @@ extension View {
  
     func wsdotToolbar() -> some View {
         modifier(WSDOTToolbarModifier())
+    }
+
+    func wsdotTabView() -> some View {
+        modifier(WSDOTTabViewModifier())
     }
 
     func wsdotFavorite(category: FavoriteCategory, itemId: String, title: String, subtitle: String? = nil) -> some View {

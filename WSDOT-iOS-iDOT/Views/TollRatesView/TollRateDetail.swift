@@ -96,9 +96,7 @@ struct TollRateDetail: View {
         }
         .navigationTitle(route.fullName)
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotToolbar()
         .wsdotFavorite(category: .tollRate, itemId: route.displayName, title: route.fullName)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

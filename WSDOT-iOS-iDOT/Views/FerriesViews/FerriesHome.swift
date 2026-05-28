@@ -28,7 +28,7 @@ struct FerriesHome: View {
                     Label("Reserve", systemImage: "wallet.bifold")
                 }
         }
-        .tint(.wsdoTprimarygreen)
+        .wsdotTabView()
     }
 }
 

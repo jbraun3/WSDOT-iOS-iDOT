@@ -97,9 +97,7 @@ struct AmtrakScheduleView: View {
         }
         .navigationTitle("Schedules")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotToolbar()
     }
 
     private func searchSchedules() {

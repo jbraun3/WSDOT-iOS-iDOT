@@ -84,9 +84,7 @@ struct BridgeAlertDetail: View {
         }
         .navigationTitle("Alert")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotToolbar()
     }
 }
 

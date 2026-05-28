@@ -29,9 +29,7 @@ struct BorderWaitsHome: View {
         }
         .navigationTitle("Border Waits")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotToolbar()
         .task {
             await fetchData()
         }

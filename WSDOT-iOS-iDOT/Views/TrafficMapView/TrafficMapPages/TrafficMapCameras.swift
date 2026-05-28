@@ -51,9 +51,7 @@ struct TrafficMapCameras: View {
                         .frame(height: 32)
                 }
             }
-            .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .wsdotToolbar()
             .task { await fetchCameras() }
         }
     }

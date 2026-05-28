@@ -21,12 +21,8 @@ struct MyRoutesHome: View {
                     Label("Routes", systemImage: "list.star")
                 }
         }
-        .navigationTitle("My Routes")
-        .navigationBarTitleDisplayMode(.inline)
-        .wsdotToolbar()
-
+        .wsdotTabView()
     }
-
 }
 
 #Preview {

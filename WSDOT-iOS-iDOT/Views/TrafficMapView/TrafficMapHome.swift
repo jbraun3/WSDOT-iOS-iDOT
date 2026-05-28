@@ -35,7 +35,7 @@ struct TrafficMapHome: View {
                 }
                 .tag(2)
         }
-        .tint(.wsdoTprimarygreen)
+        .wsdotTabView()
         .navigationTitle("Traffic Map")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -57,9 +57,7 @@ struct TrafficMapHome: View {
                 }
             }
         }
-        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotToolbar()
     }
 }
 

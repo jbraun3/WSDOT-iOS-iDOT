@@ -86,9 +86,7 @@ struct TrafficMapTravelerInformation: View {
                         .font(.headline)
                 }
             }
-            .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .wsdotToolbar()
             .sheet(isPresented: $showLegend) {
                 LegendPopup(isPresented: $showLegend)
             }
