@@ -13,6 +13,7 @@ struct WSDOT_iOS_iDOTApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             FavoriteItem.self,
+            SavedRoute.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

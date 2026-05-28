@@ -6,6 +6,7 @@
 //  Edit view modifier functions to change element styling across whole app.
 
 import SwiftUI
+import SwiftData
 
 //  Design variables
 //  Static let enum to store fixed, universal values in a group
@@ -99,6 +100,45 @@ struct WSDOTToolbarModifier: ViewModifier {
     }
 }
 
+//  Favorite star in trailing toolbar position
+//  apply with '.wsdotFavorite(category:itemId:title:)'
+//  @Query lives here (not inside the ToolbarItem closure) because SwiftData
+//  environment propagation into toolbar-hosted views is unreliable.
+struct WSDOTFavoriteModifier: ViewModifier {
+    let category: FavoriteCategory
+    let itemId: String
+    let title: String
+    let subtitle: String?
+
+    @Environment(\.modelContext) private var modelContext
+    @Query private var favorites: [FavoriteItem]
+
+    private var isFavorited: Bool {
+        favorites.contains { $0.category == category && $0.itemId == itemId }
+    }
+
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        toggleFavorite()
+                    } label: {
+                        Image(systemName: isFavorited ? "star.fill" : "star")
+                    }
+                }
+            }
+    }
+
+    private func toggleFavorite() {
+        if let existing = favorites.first(where: { $0.category == category && $0.itemId == itemId }) {
+            modelContext.delete(existing)
+        } else {
+            modelContext.insert(FavoriteItem(category: category, itemId: itemId, title: title, subtitle: subtitle))
+        }
+    }
+}
+
 //  MARK: -View Extension functions for style application
 extension View {
  
@@ -112,5 +152,9 @@ extension View {
  
     func wsdotToolbar() -> some View {
         modifier(WSDOTToolbarModifier())
+    }
+
+    func wsdotFavorite(category: FavoriteCategory, itemId: String, title: String, subtitle: String? = nil) -> some View {
+        modifier(WSDOTFavoriteModifier(category: category, itemId: itemId, title: title, subtitle: subtitle))
     }
 }

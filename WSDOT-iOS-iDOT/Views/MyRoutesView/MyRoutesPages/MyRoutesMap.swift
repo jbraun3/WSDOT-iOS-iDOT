@@ -6,12 +6,13 @@
 //          change to swip down
 
 import SwiftUI
+import SwiftData
 import MapKit
 
 struct MyRoutesMap: View {
-    
+
+    @Environment(\.modelContext) private var modelContext
     @State private var searchRoute = false
-    @ObservedObject var routeStore: RouteStore
     @State private var startSearch = ""
     @State private var endSearch = ""
     @State private var startResult: CLLocationCoordinate2D?
@@ -128,10 +129,10 @@ struct MyRoutesMap: View {
                             guard let start = startResult, let end = endResult else{
                                 return
                             }
-                            routeStore.savedRoutes.append(SavedRoute(id: UUID(),
-                                                                     name: "\(startSearch) → \(endSearch)",
-                                                                     startLocation: start,
-                                                                    endLocation: end))
+                            modelContext.insert(SavedRoute(id: UUID(),
+                                                           name: "\(startSearch) → \(endSearch)",
+                                                           startLocation: start,
+                                                           endLocation: end))
                             startSearch = ""
                             endSearch = ""
                             startResult = nil

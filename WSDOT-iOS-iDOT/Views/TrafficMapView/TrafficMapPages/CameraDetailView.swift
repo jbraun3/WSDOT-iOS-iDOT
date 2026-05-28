@@ -46,6 +46,7 @@ struct CameraDetailView: View {
         .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotFavorite(category: .trafficCamera, itemId: String(camera.id), title: camera.title, subtitle: camera.roadName)
         .task { await loadImage() }
     }
 

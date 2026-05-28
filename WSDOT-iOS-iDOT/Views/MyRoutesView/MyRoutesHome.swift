@@ -10,25 +10,20 @@ import SwiftUI
 import MapKit
 
 struct MyRoutesHome: View {
-    @State private var routeStore = RouteStore()
-    
     var body: some View {
         TabView() {
-            MyRoutesMap(routeStore: routeStore)
+            MyRoutesMap()
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }
-            MyRouteAllRoutes(routeStore: routeStore)
+            MyRouteAllRoutes()
                 .tabItem {
                     Label("Routes", systemImage: "list.star")
                 }
         }
-        .tint(.wsdoTprimarygreen)
         .navigationTitle("My Routes")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotToolbar()
 
     }
 

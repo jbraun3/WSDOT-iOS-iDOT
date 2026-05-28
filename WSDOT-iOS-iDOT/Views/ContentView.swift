@@ -10,6 +10,16 @@ import SwiftData
 
 struct ContentView: View {
     
+    // get favorites data
+    @Query(sort: \FavoriteItem.addedDate) private var favorites: [FavoriteItem]
+
+    private var categoriesWithFavorites: [(FavoriteCategory, [FavoriteItem])] {
+        FavoriteCategory.allCases.compactMap { category in
+            let items = favorites.filter { $0.category == category }
+            return items.isEmpty ? nil : (category, items)
+        }
+    }
+
     let features: [WSDOTFeature] = [
         WSDOTFeature(icon: "icHomeTraffic", label: "Traffic Map", destination: AnyView(TrafficMapHome())),
         WSDOTFeature(icon: "icHomeFerries", label: "Ferries", destination: AnyView(FerriesHome())),
@@ -48,17 +58,47 @@ struct ContentView: View {
                         Text("Favorites")
                             .font(.title2).bold()
                             .offset(x: -135)
-                        
+
                         ScrollView {
-                            LazyVStack(alignment: .leading, spacing: 10) {
-                                ForEach(features) { feature in
-                                    Text(feature.label)
+                            LazyVStack(alignment: .leading, spacing: 16) {
+                                ForEach(categoriesWithFavorites, id: \.0) { category, items in
+                                    Section {
+                                        ForEach(items) { item in
+                                            HStack {
+                                                Image(item.category.icon)
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 28, height: 28)
+                                                VStack(alignment: .leading) {
+                                                    Text(item.title)
+                                                        .font(.headline)
+                                                    if let subtitle = item.subtitle {
+                                                        Text(subtitle)
+                                                            .font(.subheadline)
+                                                            .foregroundColor(.secondary)
+                                                    }
+                                                }
+                                                Spacer()
+                                            }
+                                            .padding()
+                                            .wsdotCard()
+                                        }
+                                    } header: {
+                                        Text(category.label)
+                                            .font(.subheadline).bold()
+                                            .foregroundColor(.secondary)
+                                            .padding(.top, 4)
+                                    }
                                 }
-                                .padding()
-                                .wsdotCard()
+
+                                if favorites.isEmpty {
+                                    Text("No favorites yet")
+                                        .foregroundColor(.secondary)
+                                        .frame(maxWidth: .infinity)
+                                        .padding(.top, 20)
+                                }
                             }
                         }
-                    
                     }
                     .transition(.opacity)
                     .offset(y: 200)

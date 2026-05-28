@@ -121,6 +121,7 @@ struct MountainPassesDetail: View {
         .navigationTitle("\(pass.name)")
         .navigationBarTitleDisplayMode(.inline)
         .wsdotToolbar()
+        .wsdotFavorite(category: .mountainPass, itemId: String(pass.id), title: pass.name)
         
     }
 }

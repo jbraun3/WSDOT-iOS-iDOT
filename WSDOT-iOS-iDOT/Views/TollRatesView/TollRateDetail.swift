@@ -91,6 +91,7 @@ struct TollRateDetail: View {
         .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotFavorite(category: .tollRate, itemId: route.displayName, title: route.fullName)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("My Good To Go") {

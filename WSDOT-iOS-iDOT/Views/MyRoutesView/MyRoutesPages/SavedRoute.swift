@@ -6,16 +6,18 @@
 // storing route information, used ai to understand cllocationcoordinate2d
 
 import Foundation
+import SwiftData
 import CoreLocation
 
-struct SavedRoute: Identifiable, Codable{
-    let id: UUID
-    let name: String
-    let startLatitude: Double
-    let startLongitude: Double
-    let endLatitude: Double
-    let endLongitude: Double
-    
+@Model
+final class SavedRoute {
+    var id: UUID
+    var name: String
+    var startLatitude: Double
+    var startLongitude: Double
+    var endLatitude: Double
+    var endLongitude: Double
+
     init(id: UUID, name: String, startLocation: CLLocationCoordinate2D, endLocation: CLLocationCoordinate2D) {
         self.id = id
         self.name = name
@@ -24,12 +26,12 @@ struct SavedRoute: Identifiable, Codable{
         self.endLatitude = endLocation.latitude
         self.endLongitude = endLocation.longitude
     }
-    
-    var start: CLLocationCoordinate2D{
+
+    var start: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: startLatitude, longitude: startLongitude)
     }
-    
-    var end: CLLocationCoordinate2D{
+
+    var end: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: endLatitude, longitude: endLongitude)
     }
 }
