@@ -111,8 +111,6 @@ struct WSDOTTabViewModifier: ViewModifier {
 
 //  Favorite star in trailing toolbar position
 //  apply with '.wsdotFavorite(category:itemId:title:)'
-//  @Query lives here (not inside the ToolbarItem closure) because SwiftData
-//  environment propagation into toolbar-hosted views is unreliable.
 struct WSDOTFavoriteModifier: ViewModifier {
     let category: FavoriteCategory
     let itemId: String

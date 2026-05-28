@@ -38,7 +38,7 @@ struct RestAreaDetailView: View {
                     }
                 }
                 .padding()
-                .glassEffect(in: .rect(cornerRadius: 16.0))
+                .wsdotCard()
 
                 if !restArea.amenities.isEmpty {
                     VStack(alignment: .leading, spacing: 12) {
@@ -57,7 +57,7 @@ struct RestAreaDetailView: View {
                         }
                     }
                     .padding()
-                    .glassEffect(in: .rect(cornerRadius: 16.0))
+                    .wsdotCard()
                 }
 
                 if let notes = restArea.notes, !notes.isEmpty {
@@ -78,7 +78,7 @@ struct RestAreaDetailView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
-                    .glassEffect(in: .rect(cornerRadius: 16.0))
+                    .wsdotCard()
                 }
 
                 mapSection
@@ -87,9 +87,7 @@ struct RestAreaDetailView: View {
         }
         .navigationTitle("Rest Area")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotToolbar()
     }
 
     private var badgeColor: Color { .blue }

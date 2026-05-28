@@ -93,11 +93,22 @@ struct LegendPopup: View {
             //.background(Color.black.opacity(0.8), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
             //.background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
             .foregroundColor(.white)
-            .glassEffect(
-                .regular
-                    .tint(.black.opacity(0.2)),
-                    in: RoundedRectangle(cornerRadius: 20, style: .continuous)
-            )
+            .background {
+                if #available(iOS 26.0, *) {
+                    Color.clear
+                        .glassEffect(
+                            .regular.tint(.black.opacity(0.2)),
+                            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        )
+                } else {
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .fill(.ultraThinMaterial)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .fill(Color.black.opacity(0.2))
+                        )
+                }
+            }
             .padding(32)
         }
     }

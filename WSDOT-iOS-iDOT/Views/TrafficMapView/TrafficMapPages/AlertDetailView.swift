@@ -22,7 +22,7 @@ struct AlertDetailView: View {
                     infoRow(label: "Updated", value: alert.timeAgo)
                 }
                 .padding()
-                .glassEffect(in: .rect(cornerRadius: 16.0))
+                .wsdotCard()
 
                 mapSection
             }
@@ -79,7 +79,7 @@ struct AlertDetailView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .glassEffect(in: .rect(cornerRadius: 16.0))
+        .wsdotCard()
     }
 
     private var mapSection: some View {

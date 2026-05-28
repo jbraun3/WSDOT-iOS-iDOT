@@ -57,8 +57,7 @@ struct AmtrakScheduleView: View {
                     .opacity((isLoading || originIndex == destIndex) ? 0.6 : 1)
                 }
                 .padding()
-                .glassEffect(in: .rect(cornerRadius: 16.0))
-                .shadow(color: Color.accentColor.opacity(0.1), radius: 4, x: 0, y: 2)
+                .wsdotCard()
 
                 if originIndex == destIndex && hasSearched {
                     Text("Please select different origin and destination stations.")
@@ -218,8 +217,7 @@ struct ScheduleCard: View {
             }
         }
         .padding()
-        .glassEffect(in: .rect(cornerRadius: 16.0))
-        .shadow(color: Color.accentColor.opacity(0.1), radius: 4, x: 0, y: 2)
+        .wsdotCard()
     }
 
     private func timeStr(_ date: Date?) -> String {

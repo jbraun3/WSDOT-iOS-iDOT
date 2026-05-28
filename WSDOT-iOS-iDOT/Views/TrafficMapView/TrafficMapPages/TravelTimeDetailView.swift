@@ -17,7 +17,7 @@ struct TravelTimeDetailView: View {
                     infoRow(label: "Direction", value: travelTime.startPoint.direction)
                 }
                 .padding()
-                .glassEffect(in: .rect(cornerRadius: 16.0))
+                .wsdotCard()
 
                 VStack(spacing: 12) {
                     Text("Travel Times")
@@ -54,7 +54,7 @@ struct TravelTimeDetailView: View {
                     }
                 }
                 .padding()
-                .glassEffect(in: .rect(cornerRadius: 16.0))
+                .wsdotCard()
 
                 mapSection
 
@@ -67,9 +67,7 @@ struct TravelTimeDetailView: View {
         }
         .navigationTitle("Travel Times")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color("WSDOTprimarygreen"), for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
+        .wsdotToolbar()
         .wsdotFavorite(category: .travelTime, itemId: String(travelTime.id), title: travelTime.name)
     }
 

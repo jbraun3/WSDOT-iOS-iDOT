@@ -11,7 +11,7 @@ import MapKit
 struct MyRoutesMap: View {
 
     @Environment(\.modelContext) private var modelContext
-    @State private var searchRoute = false
+    @Binding var searchRoute: Bool
     @State private var startSearch = ""
     @State private var endSearch = ""
     @State private var startResult: CLLocationCoordinate2D?
@@ -30,36 +30,20 @@ struct MyRoutesMap: View {
     ))
 
     var body: some View {
-        ZStack(alignment: .topTrailing) {
-            Map(position: $position) {
-                ForEach(routeOptions, id: \.name) { route in
-                    MapPolyline(route.polyline)
-                        .stroke(
-                            route.name == chosenRoute?.name ? Color(.wsdoTlimegreen) : Color(.wsdoTgrey),
-                            lineWidth: route.name == chosenRoute?.name ? 5 : 3
-                        )
-                }
-            }
-
-            // add-route button
-            VStack {
-                HStack {
-                    Spacer()
-                    addNewRouteButton
-                        .padding(.trailing, 16)
-                        .padding(.top, 67)
-                }
-                Spacer()
+        Map(position: $position) {
+            ForEach(routeOptions, id: \.name) { route in
+                MapPolyline(route.polyline)
+                    .stroke(
+                        route.name == chosenRoute?.name ? Color(.wsdoTlimegreen) : Color(.wsdoTgrey),
+                        lineWidth: route.name == chosenRoute?.name ? 5 : 3
+                    )
             }
         }
-        .navigationTitle("Route Finder")
-        .navigationBarTitleDisplayMode(.inline)
-        .wsdotToolbar()
         .sheet(isPresented: $searchRoute) {
             routeFinderSheet
-                .presentationDetents([.medium, .large])
+                .presentationDetents([.fraction(0.35), .large])
                 .presentationDragIndicator(.visible)
-                .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+                .presentationBackgroundInteraction(.enabled(upThrough: .large))
         }
     }
 
@@ -159,23 +143,6 @@ struct MyRoutesMap: View {
         }
     }
 
-    private var addNewRouteButton: some View {
-        Button(action: { searchRoute.toggle() }) {
-            ZStack {
-                Circle()
-                    .fill(Color("WSDOTprimarygreen"))
-                    .frame(width: 40, height: 40)
-                    .overlay(
-                        Circle()
-                            .stroke(Color.white, lineWidth: 2)
-                    )
-                Image(systemName: "plus")
-                    .font(.system(size: 24))
-                    .foregroundColor(.white)
-            }
-        }
-    }
-
     @ViewBuilder
     func suggestedRoutes(_ results: [MKLocalSearchCompletion], onSelect: @escaping (MKLocalSearchCompletion) -> Void) -> some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -202,7 +169,7 @@ struct MyRoutesMap: View {
         }
     }
 
-    // MARK: Helper Functions
+    // MARK: -Helper Functions
 
     func fetchRouteOptions(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D) async {
         let request = MKDirections.Request()
@@ -225,8 +192,8 @@ struct MyRoutesMap: View {
         request.naturalLanguageQuery = query
         let search = MKLocalSearch(request: request)
         search.start { response, _ in
-            if let coord = response?.mapItems.first {
-                completed(coord.location.coordinate)
+            if let item = response?.mapItems.first {
+                completed(item.placemark.coordinate)
             }
         }
     }

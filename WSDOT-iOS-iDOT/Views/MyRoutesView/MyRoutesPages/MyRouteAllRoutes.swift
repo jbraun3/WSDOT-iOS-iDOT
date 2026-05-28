@@ -28,8 +28,5 @@ struct MyRouteAllRoutes: View {
                 }
             }
         }
-        .navigationTitle("My Routes")
-        .navigationBarTitleDisplayMode(.inline)
-        .wsdotToolbar()
     }
 }

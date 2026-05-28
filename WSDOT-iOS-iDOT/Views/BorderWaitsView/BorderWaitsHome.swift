@@ -99,8 +99,7 @@ struct BorderWaitCardView: View {
             .frame(width: 80)
         }
         .padding()
-        .glassEffect(in: .rect(cornerRadius: 16.0))
-        .shadow(color: Color.accentColor.opacity(0.1), radius: 4, x: 0, y: 2)
+        .wsdotCard()
     }
 
     private var routeIcon: String {

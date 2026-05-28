@@ -35,7 +35,7 @@ struct CameraDetailView: View {
                     }
                 }
                 .padding()
-                .glassEffect(in: .rect(cornerRadius: 16.0))
+                .wsdotCard()
 
                 mapSection
             }
@@ -71,7 +71,7 @@ struct CameraDetailView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .glassEffect(in: .rect(cornerRadius: 16.0))
+        .wsdotCard()
     }
 
     private var mapSection: some View {

@@ -344,8 +344,7 @@ struct DynamicSignCard: View {
                 }
             }
         }
-        .glassEffect(in: .rect(cornerRadius: 16.0))
-        .shadow(color: Color.accentColor.opacity(0.1), radius: 4, x: 0, y: 2)
+        .wsdotCard()
         .padding(.horizontal)
     }
 }

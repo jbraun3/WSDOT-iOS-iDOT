@@ -153,11 +153,12 @@ struct HomePageView: View {
                                         .padding(.top, 20)
                                 }
                             }
+                            .padding([.leading, .trailing, .bottom])
                         }
                     }
                     .transition(.opacity)
                     .offset(y: 200)
-                    .padding()
+                    .padding(.top)
                 }
                 
                 // Feature icons
@@ -246,5 +247,27 @@ struct HomePageView: View {
 }
 
 #Preview {
-    ContentView()
+    // In-memory SwiftData container seeded with sample favorites
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(
+        for: FavoriteItem.self, SavedRoute.self,
+        configurations: config
+    )
+
+    let samples: [FavoriteItem] = [
+        FavoriteItem(category: .mountainPass, itemId: "1",   title: "Snoqualmie Pass"),
+        FavoriteItem(category: .mountainPass, itemId: "2",   title: "Stevens Pass"),
+        FavoriteItem(category: .trafficCamera, itemId: "100", title: "I-5 at Northgate",  subtitle: "I-5"),
+        FavoriteItem(category: .trafficCamera, itemId: "101", title: "SR 520 at Montlake", subtitle: "SR 520"),
+        FavoriteItem(category: .borderWait,   itemId: "5",   title: "Peace Arch"),
+        FavoriteItem(category: .tollRate,     itemId: "SR 520", title: "SR 520 Bridge"),
+        FavoriteItem(category: .route,        itemId: UUID().uuidString, title: "Home → Work"),
+        FavoriteItem(category: .ferryRoute,   itemId: "sea-bi", title: "Seattle ↔ Bainbridge")
+    ]
+    for fav in samples {
+        container.mainContext.insert(fav)
+    }
+
+    return ContentView()
+        .modelContainer(container)
 }
