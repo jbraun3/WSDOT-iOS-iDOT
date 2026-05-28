@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct BorderWaitsHome: View {
     @State private var waits: [BorderWaitItem] = []
@@ -52,9 +53,21 @@ struct BorderWaitsHome: View {
 struct BorderWaitCardView: View {
     let wait: BorderWaitItem
 
+    @Environment(\.modelContext) private var modelContext
+    @Query private var favorites: [FavoriteItem]
+
+    private var isFavorited: Bool {
+        favorites.contains { $0.category == .borderWait && $0.itemId == String(wait.id) }
+    }
+
     var body: some View {
-        HStack(alignment: .top) {
-            VStack(alignment: .leading, spacing: 8) {
+        HStack {
+            Image(routeIcon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 52, height: 52)
+
+            VStack(alignment: .leading, spacing: 4) {
                 Text(wait.name)
                     .font(.headline)
                     .foregroundColor(.primary)
@@ -63,26 +76,29 @@ struct BorderWaitCardView: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
 
-                HStack(spacing: 6) {
-                    Image(systemName: routeIcon)
-                        .font(.caption)
-                    Text(wait.routeDisplay)
-                        .font(.caption)
-                }
-                .foregroundColor(.secondary)
+                Text(wait.routeDisplay)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
             }
 
             Spacer()
 
-            VStack(alignment: .trailing, spacing: 4) {
-                Text(wait.waitTimeDisplay)
-                    .font(.system(size: 28, weight: .bold))
-                    .foregroundColor(.accentColor)
+            VStack(spacing: 6) {
+                Button {
+                    toggleFavorite()
+                } label: {
+                    Image(systemName: isFavorited ? "star.fill" : "star")
+                        .font(.title3)
+                        .foregroundColor(isFavorited ? Color("WSDOTprimarygreen") : .accentColor)
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
 
-                Text(wait.timeAgo)
-                    .font(.caption2)
-                    .foregroundColor(.gray)
+                Text(wait.waitTimeDisplay)
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundColor(.accentColor)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
+            .frame(width: 80)
         }
         .padding()
         .glassEffect(in: .rect(cornerRadius: 16.0))
@@ -91,12 +107,20 @@ struct BorderWaitCardView: View {
 
     private var routeIcon: String {
         switch wait.route {
-        case 5: return "road.lanes"
-        case 9: return "road.lanes"
-        case 97: return "road.lanes"
-        case 539: return "road.lanes"
-        case 543: return "road.lanes"
-        default: return "questionmark.diamond"
+        case 5: return "icListI5"
+        case 9: return "icListSR9"
+        case 97: return "icListUS97"
+        case 539: return "icListSR539"
+        case 543: return "icListSR543"
+        default: return "icListI5"
+        }
+    }
+
+    private func toggleFavorite() {
+        if let existing = favorites.first(where: { $0.category == .borderWait && $0.itemId == String(wait.id) }) {
+            modelContext.delete(existing)
+        } else {
+            modelContext.insert(FavoriteItem(category: .borderWait, itemId: String(wait.id), title: wait.name))
         }
     }
 }

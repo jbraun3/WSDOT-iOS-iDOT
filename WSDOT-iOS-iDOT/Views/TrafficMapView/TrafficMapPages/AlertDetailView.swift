@@ -37,13 +37,13 @@ struct AlertDetailView: View {
 
     private var categoryBadge: some View {
         HStack(spacing: 8) {
-            Image(systemName: categoryIcon)
-                .font(.body)
-                .foregroundColor(categoryColor)
+            Image(alert.mapIconName)
+                .resizable()
+                .frame(width: 24, height: 24)
             Text(alert.eventCategoryTypeDescription)
                 .font(.subheadline)
                 .fontWeight(.semibold)
-                .foregroundColor(categoryColor)
+                .foregroundColor(.white)
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
@@ -116,22 +116,12 @@ struct AlertDetailView: View {
         }
     }
 
-    private var categoryIcon: String {
-        switch alert.eventCategory {
-        case "Construction": return "cone.fill"
-        case "Maintenance": return "wrench.fill"
-        case "Incident": return "car.fill"
-        case "Special Event": return "star.fill"
-        default: return "exclamationmark.triangle.fill"
-        }
-    }
-
     private var categoryColor: Color {
         switch alert.travelCenterPriorityId {
-        case 1: return .red
-        case 2: return .orange
-        case 3: return .yellow
-        default: return .accentColor
+        case 1: return .white
+        case 2: return .red
+        case 3: return .orange
+        default: return .yellow
         }
     }
 }

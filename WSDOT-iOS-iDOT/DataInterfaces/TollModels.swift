@@ -1,5 +1,41 @@
 import Foundation
 
+// MARK: - Dynamic Toll Rates (GetTollRatesAsJson)
+
+struct DynamicTollRateResponse: Codable {
+    let tripName: String
+    let currentToll: Double
+    let endLatitude: Double
+    let endLocationName: String
+    let endLongitude: Double
+    let endMilepost: Double
+    let startLatitude: Double
+    let startLocationName: String
+    let startLongitude: Double
+    let startMilepost: Double
+    let stateRoute: String
+    let timeUpdated: String
+    let travelDirection: String
+    let currentMessage: String
+
+    enum CodingKeys: String, CodingKey {
+        case tripName = "TripName"
+        case currentToll = "CurrentToll"
+        case endLatitude = "EndLatitude"
+        case endLocationName = "EndLocationName"
+        case endLongitude = "EndLongitude"
+        case endMilepost = "EndMilepost"
+        case startLatitude = "StartLatitude"
+        case startLocationName = "StartLocationName"
+        case startLongitude = "StartLongitude"
+        case startMilepost = "StartMilepost"
+        case stateRoute = "StateRoute"
+        case timeUpdated = "TimeUpdated"
+        case travelDirection = "TravelDirection"
+        case currentMessage = "CurrentMessage"
+    }
+}
+
 // MARK: - Static Toll Rates (StaticTollRates.json)
 
 struct StaticTollRatesResponse: Codable {
@@ -35,9 +71,9 @@ struct TollRateRow: Codable {
     }
 }
 
-// MARK: - Dynamic Toll Rates (GetTollRatesAsJson)
+// MARK: - Internal Mapping Model
 
-struct DynamicTollRateItem: Codable {
+struct DynamicTollRateItem {
     let tripName: String
     let endLocationName: String
     let currentToll: Float
@@ -48,33 +84,18 @@ struct DynamicTollRateItem: Codable {
     let updatedAt: String?
     let startLocationName: String
     let travelDirection: String
-    let stateRoute: Int
+    let stateRoute: String
     let startMilepost: Int
     let startLatitude: Double
     let startLongitude: Double
-
-    enum CodingKeys: String, CodingKey {
-        case tripName = "TripName"
-        case endLocationName = "EndLocationName"
-        case currentToll = "CurrentToll"
-        case endMilepost = "EndMilepost"
-        case currentMessage = "CurrentMessage"
-        case endLatitude = "EndLatitude"
-        case endLongitude = "EndLongitude"
-        case updatedAt = "UpdatedAt"
-        case startLocationName = "StartLocationName"
-        case travelDirection = "TravelDirection"
-        case stateRoute = "StateRoute"
-        case startMilepost = "StartMilepost"
-        case startLatitude = "StartLatitude"
-        case startLongitude = "StartLongitude"
-    }
 }
+
+// MARK: - Processed Models
 
 struct DynamicTollSign: Identifiable {
     let startLocationName: String
     let travelDirection: String
-    let stateRoute: Int
+    let stateRoute: String
     let milepost: Int
     let startLatitude: Double
     let startLongitude: Double

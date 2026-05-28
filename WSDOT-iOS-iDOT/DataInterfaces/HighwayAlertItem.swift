@@ -62,6 +62,23 @@ struct HighwayAlertItem: Codable, Identifiable {
         return "\(hours / 24)d ago"
     }
 
+    var mapIconName: String {
+        let severity: String
+        switch travelCenterPriorityId {
+        case 1: severity = "Closure"
+        case 2: severity = "High"
+        case 3: severity = "Medium"
+        default: severity = "Low"
+        }
+        let prefix: String
+        switch eventCategoryType {
+        case "Construction": prefix = "construction"
+        case "Incident": prefix = "incident"
+        default: prefix = "incident"
+        }
+        return "\(prefix)\(severity)Alert"
+    }
+
     private func parseDotNetDate(_ dateString: String) -> Date? {
         let pattern = #"\/Date\((\d+)([+-]\d{4})?\)\/"#
         guard let regex = try? NSRegularExpression(pattern: pattern),

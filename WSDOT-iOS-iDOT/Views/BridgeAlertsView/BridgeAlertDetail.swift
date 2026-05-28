@@ -39,10 +39,12 @@ struct BridgeAlertDetail: View {
                         Text(attrStr)
                             .font(.body)
                             .lineSpacing(4)
+                            .foregroundColor(.white)
                     } else {
                         Text(alert.descText)
                             .font(.body)
                             .lineSpacing(4)
+                            .foregroundColor(.white)
                     }
                 }
                 .padding()

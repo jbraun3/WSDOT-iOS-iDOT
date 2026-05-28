@@ -18,7 +18,9 @@ struct MountainPassesDetail: View {
     var body: some View {
         ScrollView{
             VStack(alignment: .leading, spacing: 24) {
-                
+
+                categoryBadge
+
                 Text(pass.name)
                     .font(.largeTitle).bold()
                 
@@ -123,5 +125,25 @@ struct MountainPassesDetail: View {
         .wsdotToolbar()
         .wsdotFavorite(category: .mountainPass, itemId: String(pass.id), title: pass.name)
         
+    }
+
+    private var categoryBadge: some View {
+        HStack(spacing: 8) {
+            Image("icMountainPass")
+                .resizable()
+                .frame(width: 24, height: 24)
+            Text(pass.name)
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .foregroundColor(.white)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(Color.blue.opacity(0.15))
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.blue.opacity(0.5), lineWidth: 1)
+        )
     }
 }

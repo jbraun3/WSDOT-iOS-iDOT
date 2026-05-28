@@ -25,7 +25,12 @@ struct TrafficMap: View {
     @State private var isLoadingTravelTimes = true
     @State private var isLoadingRestAreas = true
     @State private var selectedCamera: TrafficCameraItem?
+    @State private var selectedAlert: HighwayAlertItem?
+    @State private var selectedPass: MountainPass?
+    @State private var selectedRestArea: RestAreaItem?
+    @State private var selectedTravelTimeGroup: TravelTimeGroup?
     @State private var savePositionTask: Task<Void, Never>?
+    @State private var hasCenteredOnUser = false
 
     @AppStorage("TrafficLayerMarkerPref") private var trafficLayerOn = true
     @AppStorage("CameraMarkerPref") private var camerasOn = true
@@ -34,7 +39,6 @@ struct TrafficMap: View {
     @AppStorage("RestAreaMarkerPref") private var restAreasOn = true
     @AppStorage("TravelTimesMarkerPref") private var travelTimesOn = true
     @AppStorage("mapStylePref") private var mapStyle = "system"
-    @AppStorage("shouldClusterCameraIcons") private var clusterCamerasOn = true
 
     var body: some View {
         ZStack {
@@ -43,7 +47,7 @@ struct TrafficMap: View {
 
                 if camerasOn {
                     ForEach(cameras) { camera in
-                        Annotation(camera.title, coordinate: camera.coordinate) {
+                        Annotation("", coordinate: camera.coordinate) {
                             Image("icMapCamera")
                                 .resizable()
                                 .frame(width: 36, height: 36)
@@ -55,10 +59,12 @@ struct TrafficMap: View {
 
                 if alertsOn {
                     ForEach(alerts.filter { $0.hasValidLocation }) { alert in
-                        Annotation(alert.eventCategoryType, coordinate: alert.coordinate) {
-                            Image(alertIconName(for: alert.travelCenterPriorityId))
+                        Annotation("", coordinate: alert.coordinate) {
+                            Image(alert.mapIconName)
                                 .resizable()
                                 .frame(width: 36, height: 36)
+                                .contentShape(Rectangle())
+                                .onTapGesture { selectedAlert = alert }
                         }
                     }
                 }
@@ -66,10 +72,12 @@ struct TrafficMap: View {
                 if mountainPassesOn {
                     ForEach(mountainPasses) { pass in
                         if let coordinate = pass.coordinate {
-                            Annotation(pass.name, coordinate: coordinate) {
+                            Annotation("", coordinate: coordinate) {
                                 Image("icMountainPass")
                                     .resizable()
                                     .frame(width: 36, height: 36)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture { selectedPass = pass }
                             }
                         }
                     }
@@ -77,23 +85,25 @@ struct TrafficMap: View {
 
                 if restAreasOn {
                     ForEach(restAreas) { area in
-                        Annotation(area.location, coordinate: area.coordinate) {
+                        Annotation("", coordinate: area.coordinate) {
                             Image(area.hasDump ? "icMapRestAreaDump" : "icMapRestArea")
                                 .resizable()
                                 .frame(width: 36, height: 36)
+                                .contentShape(Rectangle())
+                                .onTapGesture { selectedRestArea = area }
                         }
                     }
                 }
 
                 if travelTimesOn {
-                    ForEach(travelTimes) { time in
-                        let coord = CLLocationCoordinate2D(latitude: time.startPoint.latitude, longitude: time.startPoint.longitude)
-                        if coord.latitude != 0 || coord.longitude != 0 {
-                            Annotation(time.name, coordinate: coord) {
-                                Image("icTravelTime")
-                                    .resizable()
-                                    .frame(width: 36, height: 36)
-                            }
+                    let groups = groupTravelTimes(travelTimes)
+                    ForEach(groups) { group in
+                        Annotation("", coordinate: group.center) {
+                            Image("icTravelTime")
+                                .resizable()
+                                .frame(width: 36, height: 36)
+                                .contentShape(Rectangle())
+                                .onTapGesture { selectedTravelTimeGroup = group }
                         }
                     }
                 }
@@ -105,7 +115,25 @@ struct TrafficMap: View {
             )
             .onAppear {
                 restoreMapPosition()
+                if !hasCenteredOnUser, let location = locationManager.userLocation, UserDefaults.standard.double(forKey: "MapLatitudeBound") == 0 {
+                    hasCenteredOnUser = true
+                    position = .region(MKCoordinateRegion(
+                        center: location.coordinate,
+                        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                    ))
+                }
+                if UserDefaults.standard.double(forKey: "MapLatitudeBound") == 0 {
+                    locationManager.requestLocation()
+                }
                 loadData()
+            }
+            .onReceive(locationManager.$userLocation.compactMap { $0 }) { location in
+                guard !hasCenteredOnUser, UserDefaults.standard.double(forKey: "MapLatitudeBound") == 0 else { return }
+                hasCenteredOnUser = true
+                position = .region(MKCoordinateRegion(
+                    center: location.coordinate,
+                    span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                ))
             }
             .onChange(of: position) { _, _ in
                 savePositionTask?.cancel()
@@ -144,6 +172,26 @@ struct TrafficMap: View {
         .sheet(item: $selectedCamera) { camera in
             NavigationStack {
                 CameraDetailView(camera: camera)
+            }
+        }
+        .sheet(item: $selectedAlert) { alert in
+            NavigationStack {
+                AlertDetailView(alert: alert)
+            }
+        }
+        .sheet(item: $selectedPass) { pass in
+            NavigationStack {
+                MountainPassesDetail(pass: pass)
+            }
+        }
+        .sheet(item: $selectedRestArea) { area in
+            NavigationStack {
+                RestAreaDetailView(restArea: area)
+            }
+        }
+        .sheet(item: $selectedTravelTimeGroup) { group in
+            NavigationStack {
+                TravelTimeListView(group: group)
             }
         }
     }
@@ -278,8 +326,8 @@ struct TrafficMap: View {
     private func restoreMapPosition() {
         let lat = UserDefaults.standard.double(forKey: "MapLatitudeBound")
         let lon = UserDefaults.standard.double(forKey: "MapLongitudeBound")
-        let zoom = UserDefaults.standard.float(forKey: "MapZoom")
         if lat != 0, lon != 0 {
+            let zoom = UserDefaults.standard.float(forKey: "MapZoom")
             let spanDelta = Double(max(0.01, 0.5 / Double(max(zoom, 1))))
             position = .region(MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: lat, longitude: lon),
@@ -298,12 +346,25 @@ struct TrafficMap: View {
         }
     }
 
-    private func alertIconName(for priorityId: Int) -> String {
-        switch priorityId {
-        case 1: return "icMapClosed"
-        case 2: return "icMapAlertHigh"
-        case 3: return "icMapAlertModerate"
-        default: return "icMapAlertLow"
+    private func groupTravelTimes(_ times: [TravelTime]) -> [TravelTimeGroup] {
+        let filtered = times.filter { !$0.name.localizedCaseInsensitiveContains("HOV") && !$0.description.localizedCaseInsensitiveContains("HOV") }
+        let threshold = 0.05
+        var groups: [TravelTimeGroup] = []
+        for time in filtered {
+            let coord = CLLocationCoordinate2D(latitude: time.startPoint.latitude, longitude: time.startPoint.longitude)
+            if coord.latitude == 0 && coord.longitude == 0 { continue }
+            if let idx = groups.firstIndex(where: { abs($0.center.latitude - coord.latitude) < threshold && abs($0.center.longitude - coord.longitude) < threshold }) {
+                var updated = groups[idx]
+                updated.times.append(time)
+                let lat = updated.times.reduce(0.0) { $0 + $1.startPoint.latitude } / Double(updated.times.count)
+                let lon = updated.times.reduce(0.0) { $0 + $1.startPoint.longitude } / Double(updated.times.count)
+                updated.center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                groups[idx] = updated
+            } else {
+                groups.append(TravelTimeGroup(id: "\(coord.latitude)-\(coord.longitude)", times: [time], center: coord))
+            }
         }
+        return groups
     }
+
 }

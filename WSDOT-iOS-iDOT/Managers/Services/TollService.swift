@@ -48,8 +48,26 @@ class TollService {
             throw URLError(.badServerResponse)
         }
 
-        let items = try decoder.decode([DynamicTollRateItem].self, from: data)
-        let filtered = items.filter { !shouldSkipTrip($0) }
+        let items = try decoder.decode([DynamicTollRateResponse].self, from: data)
+        let mapped = items.map { item -> DynamicTollRateItem in
+            DynamicTollRateItem(
+                tripName: item.tripName,
+                endLocationName: item.endLocationName,
+                currentToll: Float(item.currentToll),
+                endMilepost: Int(item.endMilepost),
+                currentMessage: item.currentMessage,
+                endLatitude: item.endLatitude,
+                endLongitude: item.endLongitude,
+                updatedAt: item.timeUpdated,
+                startLocationName: item.startLocationName,
+                travelDirection: item.travelDirection,
+                stateRoute: item.stateRoute,
+                startMilepost: Int(item.startMilepost),
+                startLatitude: item.startLatitude,
+                startLongitude: item.startLongitude
+            )
+        }
+        let filtered = mapped.filter { !shouldSkipTrip($0) }
         return groupIntoSigned(filtered)
     }
 

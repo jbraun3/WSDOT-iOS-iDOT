@@ -54,6 +54,14 @@ enum TollRoute: CaseIterable {
         }
     }
 
+    var dynamicStateRouteFilter: String {
+        switch self {
+        case .sr167: return "SR 167"
+        case .i405: return "I-405"
+        default: return ""
+        }
+    }
+
     var infoURL: String {
         switch self {
         case .sr16: return "https://wsdot.wa.gov/travel/roads-bridges/toll-roads-bridges-tunnels/tacoma-narrows-bridge-tolling"
@@ -191,8 +199,7 @@ struct TollRateDetail: View {
         do {
             if route.isDynamic {
                 let allSigns = try await TollService.shared.getDynamicTollRates()
-                let routeInt = Int(route.dynamicStateRoute) ?? 0
-                dynamicSigns = allSigns.filter { $0.stateRoute == routeInt }
+                dynamicSigns = allSigns.filter { $0.stateRoute == route.dynamicStateRouteFilter }
             } else {
                 staticItems = try await TollService.shared.getStaticTollRates()
                     .filter { route.staticIds.contains($0.id) }
@@ -223,6 +230,10 @@ struct TollRateTableView: View {
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: 16))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.white, lineWidth: 1)
+        )
         .padding(.horizontal)
     }
 
@@ -236,9 +247,21 @@ struct TollRateTableView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 8)
                     .padding(.vertical, 10)
+                    .overlay(
+                        Rectangle()
+                            .frame(width: 1)
+                            .foregroundColor(Color.white),
+                        alignment: .trailing
+                    )
             }
         }
         .background(Color(.systemGray6))
+        .overlay(
+            Rectangle()
+                .frame(height: 1)
+                .foregroundColor(Color.white),
+            alignment: .bottom
+        )
     }
 
     private func dataRow(_ row: TollRateRow) -> some View {
@@ -252,9 +275,21 @@ struct TollRateTableView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 8)
                     .padding(.vertical, 12)
+                    .overlay(
+                        Rectangle()
+                            .frame(width: 1)
+                            .foregroundColor(Color.white),
+                        alignment: .trailing
+                    )
             }
         }
-        .background(isActive ? Color.accentColor : Color(.systemBackground))
+        .background(isActive ? Color("WSDOTprimarygreen") : Color(.systemBackground))
+        .overlay(
+            Rectangle()
+                .frame(height: 1)
+                .foregroundColor(Color.white),
+            alignment: .bottom
+        )
     }
 
     private func isRowActive(_ row: TollRateRow) -> Bool {

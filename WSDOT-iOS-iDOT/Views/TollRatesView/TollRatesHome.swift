@@ -37,10 +37,10 @@ struct TollRouteCard: View {
 
     var body: some View {
         HStack(spacing: 16) {
-            Image(systemName: iconName)
-                .font(.title2)
-                .foregroundColor(.accentColor)
-                .frame(width: 40)
+            Image(iconName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 52, height: 52)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(route.fullName)
@@ -61,12 +61,12 @@ struct TollRouteCard: View {
 
     private var iconName: String {
         switch route {
-        case .sr16: return "road.lanes"
-        case .sr99: return "tunnel"
-        case .sr167: return "arrow.triangle.swap"
-        case .sr509: return "road.lanes"
-        case .sr520: return "bridge"
-        case .i405: return "arrow.triangle.swap"
+        case .sr16: return "icTabSR16"
+        case .sr99: return "icTabSR99"
+        case .sr167: return "icTabSR167"
+        case .sr509: return "icTabSR509"
+        case .sr520: return "icTabSR520"
+        case .i405: return "icTabI405"
         }
     }
 }
