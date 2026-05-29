@@ -12,16 +12,20 @@ import CoreLocation
 final class SavedRoute {
     var id: UUID
     var name: String
+    var startLocationName: String
     var startLatitude: Double
     var startLongitude: Double
+    var endLocationName: String
     var endLatitude: Double
     var endLongitude: Double
 
-    init(id: UUID, name: String, startLocation: CLLocationCoordinate2D, endLocation: CLLocationCoordinate2D) {
+    init(id: UUID, name: String, startLocationName: String, startLocation: CLLocationCoordinate2D, endLocationName: String, endLocation: CLLocationCoordinate2D) {
         self.id = id
         self.name = name
+        self.startLocationName = startLocationName
         self.startLatitude = startLocation.latitude
         self.startLongitude = startLocation.longitude
+        self.endLocationName = endLocationName
         self.endLatitude = endLocation.latitude
         self.endLongitude = endLocation.longitude
     }

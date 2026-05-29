@@ -22,8 +22,7 @@ struct MyRoutesMap: View {
     @State private var routeOptions: [MKRoute] = []
     @StateObject private var routeSearchCompleter = SearchCompleter()
 
-    var canSubmit: Bool { startResult != nil && endResult != nil }
-    var canSave: Bool { chosenRoute != nil }
+    var canSubmit: Bool { startResult != nil && endResult != nil && chosenRoute != nil }
 
     @State private var position: MapCameraPosition = .region(MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 47.5990, longitude: -122.3350),
@@ -40,6 +39,7 @@ struct MyRoutesMap: View {
                     )
             }
         }
+        .toolbar(searchRoute ? .hidden: .visible, for: .tabBar)
         .sheet(isPresented: $searchRoute) {
             routeFinderSheet
                 .presentationDetents([.fraction(0.35), .large])
@@ -116,13 +116,48 @@ struct MyRoutesMap: View {
                         }
                     }
                 }
+                
+                if !routeOptions.isEmpty {
+                    VStack(alignment: .leading, spacing: 4){
+                        Text("Select Route Options")
+                            .font(.caption)
+                            .foregroundColor(.wsdoTgrey)
+                        ScrollView(.horizontal){
+                            HStack(spacing: 10){
+                                ForEach(routeOptions.indices, id:\.self){ index in
+                                    let route = routeOptions[index]
+                                    Button( action: {
+                                        withAnimation { chosenRoute = route}
+                                    }){
+                                        VStack(alignment: .leading){
+                                            Text(route.name.isEmpty ? "Route \(index + 1)": route.name)
+                                                .font(.subheadline)
+                                                .bold()
+                                        }
+                                        .padding(10)
+                                        .background(chosenRoute == route ? Color(.wsdoTlimegreen) : Color(.wsdoTgrey))
+                                        .cornerRadius(8)
+                                    }
+                                    .foregroundColor(.primary)
+                                }
+                            }
+                            .padding(.vertical, 4)
+                        }
+                    }
+                }
 
                 // submit button
                 Button {
-                    guard let start = startResult, let end = endResult else { return }
+                    guard let start = startResult, let end = endResult, let chosen = chosenRoute else { return }
+                    let routeName = chosen.name
+                    
+                    let startAddress = startSearch.components(separatedBy: ",")[0]
+                    let endAddress = endSearch.components(separatedBy: ",")[0]
                     modelContext.insert(SavedRoute(id: UUID(),
-                                                   name: "\(startSearch) → \(endSearch)",
+                                                   name: "\(startAddress) → \(endAddress) via \(routeName, default: "")",
+                                                   startLocationName: startSearch,
                                                    startLocation: start,
+                                                   endLocationName: endSearch,
                                                    endLocation: end))
                     startSearch = ""
                     endSearch = ""
