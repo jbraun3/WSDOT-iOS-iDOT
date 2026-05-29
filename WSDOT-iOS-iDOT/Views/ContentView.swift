@@ -221,19 +221,19 @@ struct ContentView: View {
         configurations: config
     )
 
-//    let samples: [FavoriteItem] = [
-//        FavoriteItem(category: .mountainPass, itemId: "1",   title: "Snoqualmie Pass"),
-//        FavoriteItem(category: .mountainPass, itemId: "2",   title: "Stevens Pass"),
-//        FavoriteItem(category: .trafficCamera, itemId: "100", title: "I-5 at Northgate",  subtitle: "I-5"),
-//        FavoriteItem(category: .trafficCamera, itemId: "101", title: "SR 520 at Montlake", subtitle: "SR 520"),
-//        FavoriteItem(category: .borderWait,   itemId: "5",   title: "Peace Arch"),
-//        FavoriteItem(category: .tollRate,     itemId: "SR 520", title: "SR 520 Bridge"),
-//        FavoriteItem(category: .route,        itemId: UUID().uuidString, title: "Home → Work"),
-//        FavoriteItem(category: .ferryRoute,   itemId: "sea-bi", title: "Seattle ↔ Bainbridge")
-//    ]
-//    for fav in samples {
-//        container.mainContext.insert(fav)
-//    }
+    let samples: [FavoriteItem] = [
+        FavoriteItem(category: .mountainPass, itemId: "1",   title: "Snoqualmie Pass"),
+        FavoriteItem(category: .mountainPass, itemId: "2",   title: "Stevens Pass"),
+        FavoriteItem(category: .trafficCamera, itemId: "100", title: "I-5 at Northgate",  subtitle: "I-5"),
+        FavoriteItem(category: .trafficCamera, itemId: "101", title: "SR 520 at Montlake", subtitle: "SR 520"),
+        FavoriteItem(category: .borderWait,   itemId: "5",   title: "Peace Arch"),
+        FavoriteItem(category: .tollRate,     itemId: "SR 520", title: "SR 520 Bridge"),
+        FavoriteItem(category: .route,        itemId: UUID().uuidString, title: "Home → Work"),
+        FavoriteItem(category: .ferryRoute,   itemId: "sea-bi", title: "Seattle ↔ Bainbridge")
+    ]
+    for fav in samples {
+        container.mainContext.insert(fav)
+    }
 
     return ContentView()
         .modelContainer(container)
