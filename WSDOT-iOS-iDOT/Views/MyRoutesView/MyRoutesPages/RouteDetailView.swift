@@ -16,6 +16,7 @@ struct RouteDetailView: View {
     
     @Namespace private var tabNamespace
     
+    
     @State private var calculatedRoute: MKRoute? = nil
     @State private var position: MapCameraPosition = .automatic
 
@@ -28,6 +29,16 @@ struct RouteDetailView: View {
 
                 mapSection
                     .padding(.horizontal)
+                
+                HStack{
+                    Text("Date Using Route:")
+                        .font(.subheadline)
+                    DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                        .padding(.horizontal)
+                        .datePickerStyle(.compact)
+                        .labelsHidden()
+                }
+                .padding(.horizontal)
                 
                 HStack(spacing: 0){
                     ForEach(["Alerts", "Travel Times", "Cameras"], id: \.self){ tab in
