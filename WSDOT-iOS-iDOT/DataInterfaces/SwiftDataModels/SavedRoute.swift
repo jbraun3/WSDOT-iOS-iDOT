@@ -3,7 +3,6 @@
 //  WSDOT-iOS-iDOT
 //
 //
-// storing route information, used ai to understand cllocationcoordinate2d
 
 import Foundation
 import SwiftData

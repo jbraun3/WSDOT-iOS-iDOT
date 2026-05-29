@@ -8,6 +8,6 @@ import SwiftUI
 
 struct FerriesReserve: View {
     var body: some View {
-        Text("FerriesReserve")
+        Text("FerriesReserve - Coming Soon!")
     }
 }

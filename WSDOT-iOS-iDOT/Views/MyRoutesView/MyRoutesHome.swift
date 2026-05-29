@@ -20,7 +20,8 @@ struct MyRoutesHome: View {
         default: return "My Routes"
         }
     }
-
+    
+    // need this to switch between headers as nav info does not propogate well
     var body: some View {
         TabView(selection: $selectedTab) {
             MyRoutesMap(searchRoute: $searchRoute)

@@ -118,6 +118,7 @@ struct WSDOTFavoriteModifier: ViewModifier {
     let subtitle: String?
 
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.toastCenter) private var toastCenter
     @Query private var favorites: [FavoriteItem]
 
     private var isFavorited: Bool {
@@ -142,6 +143,7 @@ struct WSDOTFavoriteModifier: ViewModifier {
             modelContext.delete(existing)
         } else {
             modelContext.insert(FavoriteItem(category: category, itemId: itemId, title: title, subtitle: subtitle))
+            toastCenter.show("Added to favorites")
         }
     }
 }

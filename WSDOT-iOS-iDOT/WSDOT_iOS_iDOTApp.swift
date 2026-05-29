@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct WSDOT_iOS_iDOTApp: App {
+    @State private var toastCenter = ToastCenter()
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             FavoriteItem.self,
@@ -27,6 +29,8 @@ struct WSDOT_iOS_iDOTApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .toastOverlay()
+                .environment(\.toastCenter, toastCenter)
         }
         .modelContainer(sharedModelContainer)
     }

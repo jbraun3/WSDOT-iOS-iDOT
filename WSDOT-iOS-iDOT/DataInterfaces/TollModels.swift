@@ -1,7 +1,5 @@
 import Foundation
 
-// MARK: - Dynamic Toll Rates (GetTollRatesAsJson)
-
 struct DynamicTollRateResponse: Codable {
     let tripName: String
     let currentToll: Double

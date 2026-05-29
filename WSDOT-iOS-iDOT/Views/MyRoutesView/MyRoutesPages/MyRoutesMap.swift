@@ -11,6 +11,7 @@ import MapKit
 struct MyRoutesMap: View {
 
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.toastCenter) private var toastCenter
     @Binding var searchRoute: Bool
     @State private var startSearch = ""
     @State private var endSearch = ""
@@ -129,6 +130,7 @@ struct MyRoutesMap: View {
                     endResult = nil
                     resetRoutes()
                     searchRoute = false
+                    toastCenter.show("Route saved")
                 } label: {
                     Text("Save Route")
                         .frame(maxWidth: .infinity)

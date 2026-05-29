@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftData
 
 struct BorderWaitsHome: View {
     @State private var waits: [BorderWaitItem] = []
@@ -51,13 +50,6 @@ struct BorderWaitsHome: View {
 struct BorderWaitCardView: View {
     let wait: BorderWaitItem
 
-    @Environment(\.modelContext) private var modelContext
-    @Query private var favorites: [FavoriteItem]
-
-    private var isFavorited: Bool {
-        favorites.contains { $0.category == .borderWait && $0.itemId == String(wait.id) }
-    }
-
     var body: some View {
         HStack {
             Image(routeIcon)
@@ -81,22 +73,10 @@ struct BorderWaitCardView: View {
 
             Spacer()
 
-            VStack(spacing: 6) {
-                Button {
-                    toggleFavorite()
-                } label: {
-                    Image(systemName: isFavorited ? "star.fill" : "star")
-                        .font(.title3)
-                        .foregroundColor(isFavorited ? Color("WSDOTprimarygreen") : .accentColor)
-                }
-                .frame(maxWidth: .infinity, alignment: .trailing)
-
-                Text(wait.waitTimeDisplay)
-                    .font(.system(size: 22, weight: .bold))
-                    .foregroundColor(.accentColor)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-            }
-            .frame(width: 80)
+            Text(wait.waitTimeDisplay)
+                .font(.system(size: 22, weight: .bold))
+                .foregroundColor(.accentColor)
+                .frame(width: 80, alignment: .trailing)
         }
         .padding()
         .wsdotCard()
@@ -110,14 +90,6 @@ struct BorderWaitCardView: View {
         case 539: return "icListSR539"
         case 543: return "icListSR543"
         default: return "icListI5"
-        }
-    }
-
-    private func toggleFavorite() {
-        if let existing = favorites.first(where: { $0.category == .borderWait && $0.itemId == String(wait.id) }) {
-            modelContext.delete(existing)
-        } else {
-            modelContext.insert(FavoriteItem(category: .borderWait, itemId: String(wait.id), title: wait.name))
         }
     }
 }

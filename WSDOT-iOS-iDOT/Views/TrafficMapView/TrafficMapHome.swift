@@ -8,7 +8,7 @@ struct TrafficMapHome: View {
             TrafficMap()
                 .tabItem {
                     VStack {
-                        Image(systemName: "map")
+                        Image(systemName: "map.fill")
                             .environment(\.symbolVariants, .none)
                         Text("Location")
                     }
@@ -18,7 +18,7 @@ struct TrafficMapHome: View {
             TrafficMapAlerts()
                 .tabItem {
                     VStack {
-                        Image(systemName: "exclamationmark.triangle.text.page")
+                        Image(systemName: "exclamationmark.triangle.text.page.fill")
                             .environment(\.symbolVariants, .none)
                         Text("Alerts")
                     }
@@ -28,13 +28,14 @@ struct TrafficMapHome: View {
             TrafficMapTravelerInformation()
                 .tabItem {
                     VStack {
-                        Image(systemName: "gearshape")
+                        Image(systemName: "gearshape.fill")
                             .environment(\.symbolVariants, .none)
                         Text("Settings")
                     }
                 }
                 .tag(2)
         }
+        // need this to switch between headers as nav info does not propogate well
         .wsdotTabView()
         .navigationTitle("Traffic Map")
         .navigationBarTitleDisplayMode(.inline)

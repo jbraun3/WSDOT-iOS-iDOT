@@ -64,34 +64,50 @@ struct ContentView: View {
                             .offset(x: -135)
 
                         ScrollView {
-                            LazyVStack(alignment: .leading, spacing: 16) {
+                            VStack(alignment: .leading, spacing: 16) {
                                 ForEach(categoriesWithFavorites, id: \.0) { category, items in
-                                    Section {
-                                        ForEach(items) { item in
-                                            HStack {
-                                                Image(item.category.icon)
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 28, height: 28)
-                                                VStack(alignment: .leading) {
-                                                    Text(item.title)
-                                                        .font(.headline)
-                                                    if let subtitle = item.subtitle {
-                                                        Text(subtitle)
-                                                            .font(.subheadline)
-                                                            .foregroundColor(.secondary)
-                                                    }
-                                                }
-                                                Spacer()
-                                            }
-                                            .padding()
-                                            .wsdotCard()
-                                        }
-                                    } header: {
+                                    VStack(alignment: .leading, spacing: 8) {
+
                                         Text(category.label)
                                             .font(.subheadline).bold()
                                             .foregroundColor(.secondary)
-                                            .padding(.top, 4)
+                                            .padding(.horizontal, 4)
+
+                                        VStack(spacing: 0) {
+                                            ForEach(Array(items.enumerated()), id: \.element.id) { index, item in
+                                                NavigationLink(value: item) {
+                                                    HStack {
+                                                        Image(item.category.icon)
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .frame(width: 28, height: 28)
+                                                        VStack(alignment: .leading) {
+                                                            Text(item.title)
+                                                                .font(.headline)
+                                                                .foregroundColor(.primary)
+                                                            if let subtitle = item.subtitle {
+                                                                Text(subtitle)
+                                                                    .font(.subheadline)
+                                                                    .foregroundColor(.secondary)
+                                                            }
+                                                        }
+                                                        Spacer()
+                                                        Image(systemName: "chevron.right")
+                                                            .font(.caption)
+                                                            .foregroundColor(.secondary)
+                                                    }
+                                                    .padding()
+                                                    .contentShape(Rectangle())
+                                                }
+                                                .buttonStyle(.plain)
+
+                                                if index < items.count - 1 {
+                                                    Divider()
+                                                        .padding(.leading, 60)
+                                                }
+                                            }
+                                        }
+                                        .wsdotCard()
                                     }
                                 }
 
@@ -106,8 +122,7 @@ struct ContentView: View {
                         }
                     }
                     .transition(.opacity)
-                    .offset(y: 200)
-                    .padding(.top)
+                    .padding(.top, 208)
                 }
                 
                 // Feature icons
@@ -157,6 +172,9 @@ struct ContentView: View {
             )
             .navigationBarTitleDisplayMode(.inline)
             .wsdotToolbar()
+            .navigationDestination(for: FavoriteItem.self) { item in
+                FavoriteDestinationView(item: item)
+            }
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Image("WSDOT-logo-white")
