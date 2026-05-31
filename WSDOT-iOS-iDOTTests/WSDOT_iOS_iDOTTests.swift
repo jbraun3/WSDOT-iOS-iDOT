@@ -348,11 +348,11 @@ struct WSDOT_iOS_iDOTTests {
         }
     }
 
-    @Test("HighwayAlertItem isActive uses parseDotNetDate")
+    @Test("HighwayAlertItem isActive based on date properties")
     func alertIsActive() {
         let now = Date()
-        let startDate = Calendar.current.date(byAdding: .day, value: -1, to: now)// Int64(now.timeIntervalSince1970 - 86400) * 1000
-        let endDate = Calendar.current.date(byAdding: .day, value: 2, to: now) //Int64(now.timeIntervalSince1970 + 86400) * 1000
+        let startDate = Calendar.current.date(byAdding: .day, value: -1, to: now)
+        let endDate = Calendar.current.date(byAdding: .day, value: 2, to: now)
 
         let json = """
         {
