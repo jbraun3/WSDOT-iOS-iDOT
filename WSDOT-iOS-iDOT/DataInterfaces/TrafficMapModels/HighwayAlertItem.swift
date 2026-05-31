@@ -50,6 +50,21 @@ struct HighwayAlertItem: Codable, Identifiable {
         parseDotNetDate(lastUpdatedTime)
     }
 
+    var startDate: Date? {
+        parseDotNetDate(startTime)
+    }
+
+    var endDate: Date? {
+        endTime.flatMap { parseDotNetDate($0) }
+    }
+
+    var isActive: Bool {
+        let now = Date()
+        guard let start = startDate, start <= now else { return false }
+        if let end = endDate { return now <= end }
+        return true
+    }
+
     var timeAgo: String {
         guard let date = lastUpdatedDate else { return lastUpdatedTime }
         let interval = Date().timeIntervalSince(date)

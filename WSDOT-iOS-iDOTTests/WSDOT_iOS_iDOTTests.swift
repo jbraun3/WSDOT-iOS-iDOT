@@ -37,6 +37,7 @@ struct WSDOT_iOS_iDOTTests {
         #expect(camera.isVideo == false)
     }
 
+    
     @Test("TrafficCameraItem directionDisplay maps correctly")
     func trafficCameraDirectionDisplay() {
         let base = """
@@ -348,11 +349,11 @@ struct WSDOT_iOS_iDOTTests {
         }
     }
 
-    @Test("HighwayAlertItem isActive based on date properties")
-    func alertIsActive() {
+    @Test("HighwayAlertItem isActive uses parseDotNetDate")
+    func alertIsActive() throws {
         let now = Date()
-        let startDate = Calendar.current.date(byAdding: .day, value: -1, to: now)
-        let endDate = Calendar.current.date(byAdding: .day, value: 2, to: now)
+        let startMs = Int64((now.timeIntervalSince1970 - 86400) * 1000)
+        let endMs   = Int64((now.timeIntervalSince1970 + 2 * 86400) * 1000)
 
         let json = """
         {
@@ -362,13 +363,13 @@ struct WSDOT_iOS_iDOTTests {
             "TravelCenterPriorityId": 4,
             "DisplayLatitude": 47, "DisplayLongitude": -122,
             "StartRoadwayLocation": {"RoadName":"","Direction":"","Latitude":0,"Longitude":0},
-            "LastUpdatedTime": "/Date(\(startDate))/",
-            "StartTime": "/Date(\(startDate))/",
-            "EndTime": "/Date(\(endDate))/"
+            "LastUpdatedTime": "/Date(\(startMs))/",
+            "StartTime": "/Date(\(startMs))/",
+            "EndTime": "/Date(\(endMs))/"
         }
         """.data(using: .utf8)!
-        let alert = try! JSONDecoder().decode(HighwayAlertItem.self, from: json)
-        #expect(alert.startTime < now.ISO8601Format() && alert.endTime ?? "" > now.ISO8601Format())
+        let alert = try JSONDecoder().decode(HighwayAlertItem.self, from: json)
+        #expect(alert.isActive)
     }
 
     // MARK: - Ferries Tests
@@ -446,6 +447,78 @@ struct WSDOT_iOS_iDOTTests {
             let route = try! JSONDecoder().decode(FerryRoute.self, from: json.data(using: .utf8)!)
             #expect(route.crossingTimeDisplay == expected)
         }
+    }
+
+
+    @Test("FerriesScheduleService decodes a real-shaped /routedetails response")
+    func ferriesScheduleResponseDecoding() throws {
+        let json = """
+        [
+            {
+                "RouteID": 14,
+                "RouteAbbrev": "sea-bi",
+                "Description": "Seattle / Bainbridge Island",
+                "RegionID": 1,
+                "VesselWatchID": 1,
+                "ReservationFlag": false,
+                "InternationalFlag": false,
+                "PassengerOnlyFlag": false,
+                "CrossingTime": "35",
+                "AdaNotes": null,
+                "GeneralRouteNotes": "ADA accessible.",
+                "SeasonalRouteNotes": null
+            },
+            {
+                "RouteID": 5,
+                "RouteAbbrev": "ed-king",
+                "Description": "Edmonds / Kingston",
+                "RegionID": 1,
+                "VesselWatchID": 2,
+                "ReservationFlag": false,
+                "InternationalFlag": false,
+                "PassengerOnlyFlag": false,
+                "CrossingTime": "30",
+                "AdaNotes": null,
+                "GeneralRouteNotes": null,
+                "SeasonalRouteNotes": null
+            },
+            {
+                "RouteID": 9,
+                "RouteAbbrev": "pt-key",
+                "Description": "Port Townsend / Coupeville",
+                "RegionID": 1,
+                "VesselWatchID": 4,
+                "ReservationFlag": true,
+                "InternationalFlag": false,
+                "PassengerOnlyFlag": false,
+                "CrossingTime": "35",
+                "AdaNotes": null,
+                "GeneralRouteNotes": "Reservations recommended.",
+                "SeasonalRouteNotes": "Reduced schedule in winter."
+            }
+        ]
+        """.data(using: .utf8)!
+
+        let routes = try JSONDecoder().decode([FerryRoute].self, from: json)
+        
+        // round trip array
+        #expect(routes.count == 3)
+
+        let seattle = try #require(routes.first { $0.routeID == 14 })
+        #expect(seattle.description == "Seattle / Bainbridge Island")
+        #expect(seattle.routeAbbrev == "sea-bi")
+        #expect(seattle.crossingTime == "35")
+        #expect(seattle.reservationFlag == false)
+        #expect(seattle.generalRouteNotes == "ADA accessible.")
+        #expect(seattle.adaNotes == nil)
+        #expect(seattle.seasonalRouteNotes == nil)
+
+        #expect(seattle.displayName == "Seattle ↔ Bainbridge Island")
+        #expect(seattle.crossingTimeDisplay == "~35 min")
+
+        let portTownsend = try #require(routes.first { $0.routeID == 9 })
+        #expect(portTownsend.reservationFlag == true)
+        #expect(portTownsend.seasonalRouteNotes == "Reduced schedule in winter.")
     }
 
     // MARK: - Shared / Cross-Feature Tests - used throughout entire project

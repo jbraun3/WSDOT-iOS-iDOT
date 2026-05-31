@@ -42,7 +42,7 @@ struct MyRoutesMap: View {
         .toolbar(searchRoute ? .hidden: .visible, for: .tabBar)
         .sheet(isPresented: $searchRoute) {
             routeFinderSheet
-                .presentationDetents([.fraction(0.35), .large])
+                .presentationDetents([.fraction(0.42), .large])
                 .presentationDragIndicator(.visible)
                 .presentationBackgroundInteraction(.enabled(upThrough: .large))
         }

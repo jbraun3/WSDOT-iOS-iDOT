@@ -173,11 +173,17 @@ struct TrafficMap: View {
             NavigationStack {
                 CameraDetailView(camera: camera)
             }
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
+            .presentationBackgroundInteraction(.enabled(upThrough: .large))
         }
         .sheet(item: $selectedAlert) { alert in
             NavigationStack {
                 AlertDetailView(alert: alert)
             }
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
+            .presentationBackgroundInteraction(.enabled(upThrough: .large))
         }
         .sheet(item: $selectedPass) { pass in
             NavigationStack {
